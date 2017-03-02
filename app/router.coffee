@@ -1,9 +1,9 @@
 `import Ember from 'ember'`
-`import config from 'hudson/config/environment'`
+`import ENV from 'hudson/config/environment'`
 
 Router = Ember.Router.extend
-  location: config.locationType
-  rootURL: config.rootURL
+  location: ENV.locationType
+  rootURL: ENV.rootURL
 
 
 Router.map ->
