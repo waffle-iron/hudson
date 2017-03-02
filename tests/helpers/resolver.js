@@ -1,5 +1,5 @@
-import Resolver from '../../resolver';
-import config from '../../config/environment';
+import Resolver from 'hudson/resolver';
+import config from 'hudson/config/environment';
 
 const resolver = Resolver.create();
 
