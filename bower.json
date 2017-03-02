@@ -1,5 +1,10 @@
 {
   "name": "hudson",
   "dependencies": {
+    "ember": "^2.11.0",
+    "bohemia": "^0.6.0"
+  },
+  "resolutions": {
+    "bohemia": "^0.6.0"
   }
 }
