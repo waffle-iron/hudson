@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
-`import Resolver from './resolver'`
+`import Resolver from 'hudson/resolver'`
 `import loadInitializers from 'ember-load-initializers'`
-`import config from './config/environment'`
+`import config from 'hudson/config/environment'`
 
 Ember.MODEL_FACTORY_INJECTIONS = true
 
