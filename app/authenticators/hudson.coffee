@@ -24,7 +24,7 @@ HudsonAuthenticator = Base.extend
       lastTransition.retry()
     else
       applicationRoute = Ember.getOwner(@).lookup("route:application")
-      applicationRoute.transitionTo ENV['ember-simple-auth']["routeAfterAuthentication"]  
+      applicationRoute.transitionTo ENV['ember-simple-auth']["routeAfterAuthentication"]
 
   authenticate: (identification, password) ->
     ajax = @get "ajax"
@@ -44,6 +44,24 @@ HudsonAuthenticator = Base.extend
         for error in error.errors
           that.get("notify").error.details?.message
         reject error
+
+  restore: (data) ->
+    ajax = @get "ajax"
+    that  = @
+    new Ember.RSVP.Promise (resolve, reject) ->
+      url = ENV['ember-simple-auth']['checkEndPoint']
+      ajax.post(url, {data: data})
+      .then (data) ->
+        data = processData data
+        resolve data
+        if 'login' in location.pathname
+          that.resumeTransistion()
+      .catch (error) ->
+        localStorage.clear()
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+        reject error
+
 
 
 `export default HudsonAuthenticator;`
