@@ -40,6 +40,7 @@ HudsonAuthenticator = Base.extend
         data = processData data
         resolve data
         that.resumeTransistion()
+        window.location = "/" # FIXME: hackish way
       .catch (error) ->
         for error in error.errors
           that.get("notify").error.details?.message
@@ -56,6 +57,7 @@ HudsonAuthenticator = Base.extend
         resolve data
         if 'login' in location.pathname
           that.resumeTransistion()
+          window.location = "/" # FIXME: hackish way
       .catch (error) ->
         localStorage.clear()
         for error in error.errors

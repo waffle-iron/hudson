@@ -1,5 +1,3 @@
-import config from 'hudson/config/environment';
-
 export default function() {
 
    this.post('/login', () => {
