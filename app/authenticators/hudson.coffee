@@ -17,6 +17,15 @@ HudsonAuthenticator = Base.extend
 
   ajax: Ember.inject.service()
 
+  resumeTransistion: ->
+    authenticatedRoute = Ember.getOwner(@).lookup("route:authenticated")
+    lastTransition = authenticatedRoute.get "lastTransition"
+    if lastTransition isnt null
+      lastTransition.retry()
+    else
+      applicationRoute = Ember.getOwner(@).lookup("route:application")
+      applicationRoute.transitionTo ENV['ember-simple-auth']["routeAfterAuthentication"]  
+
   authenticate: (identification, password) ->
     ajax = @get "ajax"
     that = @
