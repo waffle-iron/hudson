@@ -6,11 +6,11 @@ h3.has-text-centered
     form.login-form
       p.control.has-icon.has-icon-left
         = input class="input" placeholder="username" value=identification id="username"
-        / = fa-icon class="is-primary" "user"
+        = fa-icon class="is-primary" "user"
 
       p.control.has-icon.has-icon-left
         = input class="input" type="password" placeholder="password" value=password id="password"
-        / = fa-icon class="is-primary" "lock"
+        = fa-icon class="is-primary" "lock"
 
       = link-to 'recover'
         p.has-text-right.forgot-password
