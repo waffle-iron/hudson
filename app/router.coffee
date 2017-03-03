@@ -10,5 +10,6 @@ Router.map ->
 
   @route 'login'
   @route 'recover'
+  @route 'authenticated'
 
 `export default Router;`
