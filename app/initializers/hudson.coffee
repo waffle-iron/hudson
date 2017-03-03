@@ -6,11 +6,11 @@ initialize = (application) ->
   application.inject 'route', 'ajax', 'service:ajax'
   application.inject 'component', 'ajax', 'service:ajax'
 
-  # injecting notification-message service
+  # injecting notification-messages service
 
-  application.inject 'route', 'notify', 'service:notification-message'
-  application.inject 'component', 'notify', 'service:notification-message'
-  application.inject 'authenticator', 'notify', 'service:notification-message'
+  application.inject 'route', 'notify', 'service:notification-messages'
+  application.inject 'component', 'notify', 'service:notification-messages'
+  application.inject 'authenticator', 'notify', 'service:notification-messages'
 
 HudsonInitializer =
   name: 'hudson'
