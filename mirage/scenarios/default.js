@@ -1,11 +1,9 @@
-export default function(/* server */) {
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-  /*
-    Seed your development database using your factories.
-    This data will not be loaded in your tests.
+export default function(server) {
 
-    Make sure to define a factory for each model you want to create.
-  */
-
-  // server.createList('post', 10);
+  var userCount = getRandomInt(3,5);
+  server.createList('user', userCount)
 }
