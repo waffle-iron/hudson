@@ -1,7 +1,7 @@
 `import Ember from 'ember'`
 `import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'`
 
-inject: {service}, isEmpty, RSVP} = Ember
+{inject: {service}, isEmpty, RSVP} = Ember
 
 AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
 
@@ -9,6 +9,6 @@ AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
 
   beforeModel: (transition) ->
     @set "lastTransition", transition
-    @_super transitions  
+    @_super transitions
 
 `export default AuthenticatedRoute`

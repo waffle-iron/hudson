@@ -16,6 +16,11 @@ module.exports = function(environment) {
         Date: false
       }
     },
+    namespace: "api",
+    host: "https://api.appknox.com",
+    'ember-cli-mirage': {
+      enabled: false
+    },
     emblemOptions: {
       blueprints: false
     },
@@ -28,12 +33,15 @@ module.exports = function(environment) {
     }
   };
 
+  if (environment === 'yashwin') {
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
+    ENV['host'] = "http://0.0.0.0:8000";
+  }
+
   if (environment === 'development') {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
   }
 
   if (environment === 'test') {
