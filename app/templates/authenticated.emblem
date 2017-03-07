@@ -2,6 +2,8 @@
   .columns
     .column.logo
       img src="images/logo.png"
-    .column.content-right.margin-top.margin-right
-      button.button.is-primary click="invalidateSession"
+    .column.content-right
+      h5.margin-right.margin-top20.account-popup
+        | Welcome User
+      button.button.is-primary.margin-right.margin-top15 click="invalidateSession"
         | logout
