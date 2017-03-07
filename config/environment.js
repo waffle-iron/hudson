@@ -30,7 +30,8 @@ module.exports = function(environment) {
     },
     'ember-simple-auth': {
       loginEndPoint: '/login',
-      checkEndPoint: '/check'
+      checkEndPoint: '/check',
+      logoutEndPoint: '/logout'
     }
   };
 

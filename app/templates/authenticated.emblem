@@ -1,0 +1,4 @@
+.columns
+  .column
+    button.button.is-primary click="invalidateSession"
+      | logout

@@ -64,6 +64,22 @@ HudsonAuthenticator = Base.extend
           that.get("notify").error error.detail?.message
         reject error
 
+  invalidate: (data) ->
+    ajax = @get "ajax"
+    that = @
+    localStorage.clear()
+    @set "currentUser", null
+    new Ember.RSVP.Promise (resolve, reject) ->
+      url = ENV['ember-simple-auth']['logoutEndPoint']
+      ajax.post(url)
+      .then (data) ->
+        resolve data
+        location.reload()
+      .catch (error) ->
+        location.reload()
+        for error in error.errors
+          that.get("notify").error error.details?.message
+        reject error
 
 
 `export default HudsonAuthenticator;`

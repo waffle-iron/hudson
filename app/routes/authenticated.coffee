@@ -18,4 +18,8 @@ AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
     userId = @get "session.data.authenticated.user_id"
     @get('store').find('user',userId)
 
+  actions:
+    invalidateSession: ->
+      @get('session').invalidate()  
+
 `export default AuthenticatedRoute`
