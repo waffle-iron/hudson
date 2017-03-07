@@ -1,4 +1,7 @@
-.columns
-  .column
-    button.button.is-primary click="invalidateSession"
-      | logout
+.top-nav
+  .columns
+    .column.logo
+      img src="images/logo.png"
+    .column.content-right.margin-top.margin-right
+      button.button.is-primary click="invalidateSession"
+        | logout
