@@ -14,12 +14,8 @@ AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
     @set "lastTransition", transition
     @_super transition
 
-  model: ->
-    userId = @get "session.data.authenticated.user_id"
-    @get('store').find('user',userId)
-
   actions:
     invalidateSession: ->
-      @get('session').invalidate()  
+      @get('session').invalidate()
 
 `export default AuthenticatedRoute`
