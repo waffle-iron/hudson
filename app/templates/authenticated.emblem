@@ -7,3 +7,25 @@
       | Yashwin Poojary
     button.button.is-primary click="invalidateSession"
       | logout
+.columns.main-container
+  .column
+    h3
+      = fa-icon "user"
+      div
+        | Users
+      div
+        | 140
+  .column
+    h3
+      = fa-icon "usd"
+      div
+        | Users
+      div
+        | 20
+  .column
+    h3
+      = fa-icon "tasks"
+      div
+        | Users
+      div
+        | 350
