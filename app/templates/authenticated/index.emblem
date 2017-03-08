@@ -6,7 +6,7 @@
         | Users
       div
         | 140
-    .column.card
+    = link-to "authenticated.pricings" class="column card"
       = fa-icon "usd"
       div
         | Pricings
