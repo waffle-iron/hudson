@@ -1,9 +1,9 @@
-.top-nav
-  .columns
-    .column.logo
-      img src="images/logo.png"
-    .column.content-right
-      h5.margin-right.margin-top20.account-popup
-        | Welcome User
-      button.button.is-primary.margin-right.margin-top15 click="invalidateSession"
-        | logout
+.columns.top-nav
+  .column.logo
+    img src="images/logo.png"
+  .column.content-right.account-section
+    = fa-icon "user"
+    h3
+      | Yashwin Poojary
+    button.button.is-primary click="invalidateSession"
+      | logout
