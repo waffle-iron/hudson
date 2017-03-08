@@ -12,5 +12,6 @@ Router.map ->
   @route 'recover'
   @route 'authenticated', path: '/', ->
     @route 'index', path: '/'
+    @route 'users', path: '/users'
 
 `export default Router;`

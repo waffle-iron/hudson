@@ -1,6 +1,6 @@
 .main-container
   .columns
-    .column.card
+    = link-to "authenticated.users" class="column card"
       = fa-icon "user"
       div
         | Users
