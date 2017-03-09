@@ -6,6 +6,8 @@ export default Factory.extend({
   },
   uuid: faker.random.number,
   username: faker.name.firstName,
+  firstName: faker.name.firstName,
+  lastName: faker.name.lastName,
   expiryDate: faker.date.future,
-  role: faker.name.jobTitle
+  role: faker.name.jobType
 });

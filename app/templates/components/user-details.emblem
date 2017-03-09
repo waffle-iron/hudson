@@ -24,11 +24,11 @@
         each users as |user|
           tr
             td
-              = user.username
+              = user.fullName
             td
               = user.role
             td
-              = user.expiryDate
+              = user.humanizedExpiryDate
             td
               = fa-icon "trash-o"
             td
