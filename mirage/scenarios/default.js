@@ -4,4 +4,5 @@ function getRandomInt(min, max) {
 
 export default function(server) {
   var userCount = getRandomInt(3, 5);
+  server.createList('user', userCount);
 }
