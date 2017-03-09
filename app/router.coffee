@@ -12,8 +12,8 @@ Router.map ->
   @route 'recover'
   @route 'authenticated', path: '/', ->
     @route 'index', path: '/'
-    @route 'users', path: '/users'
-    @route 'pricings', path: 'pricings'
-    @route 'projects', path: 'projects'
+  @route 'authenticated/users'
+  @route 'authenticated/projects'
+  @route 'authenticated/pricings'
 
 `export default Router;`
