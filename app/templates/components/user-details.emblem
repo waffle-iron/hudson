@@ -22,7 +22,7 @@
           th
             | Update
         each users as |user|
-          tr
+          tr.table-content
             td
               = user.fullName
             td
