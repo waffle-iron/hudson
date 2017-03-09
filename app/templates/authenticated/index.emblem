@@ -12,7 +12,7 @@
         | Pricings
       div
         | 20
-    .column.card
+    = link-to "authenticated.projects" class="column card"
       = fa-icon "tasks"
       div
         | Projects
