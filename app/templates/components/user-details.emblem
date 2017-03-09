@@ -1,1 +1,13 @@
-
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "user"
+      div
+        | Users
+      div
+        | 140
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "user-plus"
+      div
+        | ADD USER
