@@ -1,5 +1,5 @@
 .main-container
-  .columns
+  .columns.link-to
     = link-to "authenticated.users" class="column card"
       = fa-icon "user"
       div
@@ -18,28 +18,28 @@
         | Projects
       div
         | 350
-  .columns
+  .columns.activity-container-header
     .column.card.margin-left
       div
         | RECENT ACTIVITIES
-  .columns
-    .column.card.margin-left.activity-container
+  .columns.activity-container
+    .column.card.margin-left
       = fa-icon "usd"
       div
         | A new pricing Essentails has been added by Sugat
       div
         | 34 MINUTES AGO
-  .columns
-    .column.card.margin-left.activity-container
+  .columns.activity-container
+    .column.card.margin-left
       = fa-icon "user"
       div
         | A new user Harshit has been added by Subho
       div
         | 2 DAYS AGO
-  .columns
-    .column.card.margin-left.activity-container
+  .columns.activity-container
+    .column.card.margin-left
         = fa-icon "tasks"
         div
           | A new project Razorpay has been added by Shashank
         div
-          | 1 WEEK AGO
+          | 1 WEEK AGO          
