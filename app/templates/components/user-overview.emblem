@@ -1,0 +1,10 @@
+td
+  = user.fullName
+td
+  = user.role
+td
+  = user.humanizedExpiryDate
+td
+  = fa-icon "trash-o"
+td
+  = fa-icon "pencil-square-o"

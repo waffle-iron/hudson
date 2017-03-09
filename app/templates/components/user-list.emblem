@@ -1,0 +1,25 @@
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "user"
+      div
+        | Users
+      div
+        | 140
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "user-plus"
+      div
+        | ADD USER
+  .columns
+    .column
+      table.users-table
+        tr
+          th colspan="3"
+            = input class="input" placeholder="Search" value=query
+          th
+            | Delete
+          th
+            | Update
+        each users as |user|
+          = user-overview user=user
