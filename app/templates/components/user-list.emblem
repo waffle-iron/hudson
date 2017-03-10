@@ -6,7 +6,7 @@
         | Users
       div
         | 140
-  .columns.link-to
+  .columns.link-to click="openCollaborationModal"
     .column.card.is-one-third.margin-auto
       = fa-icon "user-plus"
       div
@@ -23,3 +23,23 @@
             | Update
         each users as |user|
           = user-overview user=user
+
+= modal-card isActive=showCollaborationModal title="Add User"
+  .card-body
+    .card-wrapper
+      form
+        p.control
+          = input class="form-control input" placeholder="Username" type="text" value=userUsername
+        p.control
+          = input class="form-control input" placeholder="Email" type="email" value=userEmail
+        p.control
+          = input class="form-control input" placeholder="Password" type="Password" value=userPassword
+        p.control
+          = input class="form-control input" placeholder="First Name" type="text" value=userFirstName
+        p.control
+          = input class="form-control input" placeholder="Last Name" type="text" value=userLastName
+        p.control
+          = textarea class="form-control input" placeholder="Namespaces" type="Password" value=userNamespaces
+  .modal-footer
+    button.margin-top10 click="addUser"
+     | Add User

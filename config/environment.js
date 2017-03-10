@@ -32,6 +32,9 @@ module.exports = function(environment) {
       loginEndPoint: '/login',
       checkEndPoint: '/check',
       logoutEndPoint: '/logout'
+    },
+    endpoints: {
+      addUser: 'add_user'  
     }
   };
 

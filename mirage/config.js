@@ -17,4 +17,8 @@ export default function() {
    this.post('/logout', () => {
     return;
   });
+
+   this.post('/add_user', () => {
+    return;
+  });
 }
