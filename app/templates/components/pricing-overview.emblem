@@ -1,0 +1,11 @@
+td
+  = fa-icon "fa-plus"
+td
+  = pricing.name
+td
+  = pricing.price
+td
+  = fa-icon "trash-o"
+td
+  = link-to "authenticated.pricing" pricing.id
+    = fa-icon "pencil-square-o"

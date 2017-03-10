@@ -15,9 +15,9 @@ Router.map ->
     @route 'users', path: '/users',
     @route 'user', path: '/user/:userId',
     @route 'pricings', path: '/pricings',
-    @route 'pricing', path: '/pricing',
+    @route 'pricing', path: '/pricing/:pricingId',
     @route 'coupons', path: '/coupons',
-    @route 'coupon', path: '/coupon',
+    @route 'coupon', path: '/coupon/:couponId',
     @route 'scans', path: '/scans',
     @route 'invoices', path: 'invoices'
 
