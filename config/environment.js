@@ -35,7 +35,8 @@ module.exports = function(environment) {
     },
     endpoints: {
       addUser: 'add_user',
-      addPricing: 'add_pricing'  
+      addPricing: 'add_pricing',
+      addCoupon: 'add_coupon'  
     }
   };
 

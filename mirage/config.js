@@ -25,4 +25,8 @@ export default function() {
    this.post('/add_pricing', () => {
     return;
   });
+
+   this.post('/add_coupon', () => {
+    return;
+  });
 }

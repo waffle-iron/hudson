@@ -4,7 +4,7 @@
       = fa-icon "fa-tags"
       div
         | Coupons
-  .columns.link-to
+  .columns.link-to click="openCouponModal"
     .column.card.is-one-third.margin-auto
       = fa-icon "fa-plus"
       div
@@ -21,3 +21,15 @@
             | Update
         each coupons as |coupon|
           = coupon-overview coupon=coupon
+
+= modal-card isActive=showCouponModal title="Add Coupon"
+  .card-body
+    .card-wrapper
+      form
+        p.control
+          = input class="form-control input" placeholder="Name" type="text" value=couponName
+        p.control
+          = input class="form-control input" placeholder="Price" type="number" value=couponPrice
+  .modal-footer
+    button.margin-top10 click="addCoupon"
+     | Add Coupon
