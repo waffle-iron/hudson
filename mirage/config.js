@@ -2,6 +2,7 @@ export default function() {
 
    this.get('users', 'user');
    this.get('/pricings', 'pricing');
+   this.get('/coupons', 'coupon');
    this.get('/pricings/:id', 'pricing');
 
    this.post('/login', () => {
