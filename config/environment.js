@@ -34,7 +34,8 @@ module.exports = function(environment) {
       logoutEndPoint: '/logout'
     },
     endpoints: {
-      addUser: 'add_user'  
+      addUser: 'add_user',
+      addPricing: 'add_pricing'  
     }
   };
 

@@ -6,7 +6,7 @@
         | Users
       div
         | 140
-  .columns.link-to click="openCollaborationModal"
+  .columns.link-to click="openUserModal"
     .column.card.is-one-third.margin-auto
       = fa-icon "user-plus"
       div
@@ -24,7 +24,7 @@
         each users as |user|
           = user-overview user=user
 
-= modal-card isActive=showCollaborationModal title="Add User"
+= modal-card isActive=showUserModal title="Add User"
   .card-body
     .card-wrapper
       form

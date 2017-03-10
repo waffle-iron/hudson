@@ -6,7 +6,7 @@
         | Pricings
       div
         | 20
-  .columns.link-to
+  .columns.link-to click="openPricingModal"
     .column.card.is-one-third.margin-auto
       = fa-icon "fa-plus"
       div
@@ -23,3 +23,19 @@
             | Update
         each pricings as |pricing|
           = pricing-overview pricing=pricing
+
+  = modal-card isActive=showPricingModal title="Add Pricing"
+    .card-body
+      .card-wrapper
+        form
+          p.control
+            = input class="form-control input" placeholder="Name" type="text" value=pricingName
+          p.control
+            = input class="form-control input" placeholder="Price" type="number" value=pricingPrice
+          p.control
+            = input class="form-control input" placeholder="Project Limit" type="number" value=pricingLimit
+          p.control
+            = textarea class="form-control input" placeholder="Description" type="text" value=pricingDescription
+    .modal-footer
+      button.margin-top10 click="addPricing"
+       | Add Pricing

@@ -17,17 +17,15 @@ UserListComponent = Ember.Component.extend
       @get("ajax").post ENV.endpoints.addUser, data:data
       .then (data)->
         that.send "closeModal"
-        that.get("notify").success "Collaboration added!"
+        that.get("notify").success "User added!"
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
-
-      that = @
-
-    openCollaborationModal: ->
-        @set "showCollaborationModal", true
+          
+    openUserModal: ->
+        @set "showUserModal", true
 
     closeModal: ->
-      @set "showCollaborationModal", false
+      @set "showUserModal", false
 
 `export default UserListComponent`

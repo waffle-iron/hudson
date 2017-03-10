@@ -21,4 +21,8 @@ export default function() {
    this.post('/add_user', () => {
     return;
   });
+
+   this.post('/add_pricing', () => {
+    return;
+  });
 }
