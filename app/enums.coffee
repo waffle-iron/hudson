@@ -8,6 +8,19 @@ ENUMS =
     INSTALLING: 5
     LAUNCHING: 6
     HOOKING: 7
+    
+  PAYMENT_DURATION:
+    MONTHLY: 1
+    QUATERLY: 3
+    HALFYEARLY: 6
+    YEARLY: 10
+
+  PAYMENT_SOURCE:
+    PAYPAL: 1
+    STRIPE_MANUAL: 2
+    BANK_TRANSFER: 3
+    MANUAL: 4
+    STRIPE_RECURRING: 5
 
 # Populate `CHOICES`
 for enumName, enumValues of ENUMS
@@ -20,4 +33,4 @@ for enumName, enumValues of ENUMS
   ENUMS[enumName]['CHOICES'] = choices
   ENUMS[enumName]['VALUES'] = values
 
-`export default ENUMS;`    
+`export default ENUMS;`

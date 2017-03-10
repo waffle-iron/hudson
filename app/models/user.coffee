@@ -6,6 +6,7 @@ User = DS.Model.extend
   firstName: DS.attr 'string'
   lastName: DS.attr 'string'
   expiryDate: DS.attr 'date'
+  invoices: DS.hasMany 'invoice', inverse:'user'
 
   humanizedExpiryDate: (->
     expiryDate = @get "expiryDate"
