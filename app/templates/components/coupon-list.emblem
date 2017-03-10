@@ -1,0 +1,23 @@
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "fa-tags"
+      div
+        | Coupons
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "fa-plus"
+      div
+        | ADD COUPON
+  .columns
+    .column
+      table.users-table
+        tr
+          th colspan="3"
+            = input class="input" placeholder="Search" value=query
+          th
+            | Delete
+          th
+            | Update
+        each coupons as |coupon|
+          = coupon-overview coupon=coupon

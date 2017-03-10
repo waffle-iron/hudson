@@ -1,0 +1,11 @@
+td
+  = fa-icon "fa-tags"
+td
+  = coupon.code
+td
+  = coupon.discount
+td
+  = fa-icon "trash-o"
+td
+  = link-to "authenticated.coupon" coupon.id
+    = fa-icon "pencil-square-o"
