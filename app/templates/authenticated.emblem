@@ -15,7 +15,7 @@
         ul.menu-list
           li
             = link-to 'authenticated.index'
-              | Dashboard
+              | Home
           li
             = link-to 'authenticated.users'
               | Users
