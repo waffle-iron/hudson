@@ -12,10 +12,10 @@
         | Pricings
       div
         | 20
-    = link-to "authenticated.projects" class="column card"
+    = link-to "authenticated.scans" class="column card"
       = fa-icon "tasks"
       div
-        | Projects
+        | Scans
       div
         | 350
   .columns.activity-container-header
@@ -42,4 +42,4 @@
         div
           | A new project Razorpay has been added by Shashank
         div
-          | 1 WEEK AGO          
+          | 1 WEEK AGO
