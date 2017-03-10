@@ -7,4 +7,5 @@ td
 td
   = fa-icon "trash-o"
 td
-  = fa-icon "pencil-square-o"
+  = link-to "authenticated.user" user.id
+    = fa-icon "pencil-square-o"

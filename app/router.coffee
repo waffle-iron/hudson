@@ -13,9 +13,12 @@ Router.map ->
   @route 'authenticated', path: '/', ->
     @route 'index', path: '/',
     @route 'users', path: '/users',
+    @route 'user', path: '/user/:userId',
     @route 'pricings', path: '/pricings',
-    @route 'scans', path: '/scans',
+    @route 'pricing', path: '/pricing',
     @route 'coupons', path: '/coupons',
+    @route 'coupon', path: '/coupon',
+    @route 'scans', path: '/scans',
     @route 'invoices', path: 'invoices'
 
 `export default Router;`

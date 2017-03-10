@@ -23,6 +23,9 @@
             = link-to 'authenticated.pricings'
               | Pricings
           li
+            = link-to 'authenticated.scans'
+              | Scans
+          li
             = link-to 'authenticated.coupons'
               | Coupons
           li
