@@ -5,8 +5,10 @@ function getRandomInt(min, max) {
 export default function(server) {
   var userCount = getRandomInt(5, 7),
   pricingCount = getRandomInt(3, 3),
-  couponCount = getRandomInt(5, 8);
+  couponCount = getRandomInt(5, 8),
+  fileCount = getRandomInt(3,5);
   server.createList('user', userCount);
   server.createList('pricing', pricingCount);
   server.createList('coupon', couponCount);
+  server.createList('file', fileCount);
 }
