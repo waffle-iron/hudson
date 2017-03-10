@@ -1,7 +1,7 @@
 td
   = user.fullName
 td
-  = user.role
+  | Manager
 td
   = user.humanizedExpiryDate
 td

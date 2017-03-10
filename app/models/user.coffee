@@ -5,7 +5,6 @@ User = DS.Model.extend
   username: DS.attr 'string'
   firstName: DS.attr 'string'
   lastName: DS.attr 'string'
-  role: DS.attr 'string'
   expiryDate: DS.attr 'date'
 
   humanizedExpiryDate: (->

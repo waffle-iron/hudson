@@ -8,6 +8,5 @@ export default Factory.extend({
   username: faker.name.firstName,
   firstName: faker.name.firstName,
   lastName: faker.name.lastName,
-  expiryDate: faker.date.future,
-  role: faker.name.jobType
+  expiryDate: faker.date.future
 });
