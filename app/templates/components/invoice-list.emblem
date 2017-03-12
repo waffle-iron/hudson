@@ -27,5 +27,7 @@
             | Payment Duration
           th
             | Payment Source
+          th
+            | Invoice Type
         each invoices as |invoice|
           = invoice-overview invoice=invoice
