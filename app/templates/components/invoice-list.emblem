@@ -1,0 +1,31 @@
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "fa-envelope"
+      div
+        | Invoices
+
+.sub-container
+  .columns
+    .column
+      table.users-table
+        tr
+          th colspan="8"
+            = input class="input" placeholder="Search" value=query
+        tr
+          th
+            | User
+          th
+            | Amount
+          th
+            | Paid On
+          th
+            | Coupon
+          th
+            | Pricing
+          th
+            | Payment Duration
+          th
+            | Payment Source
+        each invoices as |invoice|
+          = invoice-overview invoice=invoice

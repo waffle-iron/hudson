@@ -1,0 +1,14 @@
+td
+  | username
+td
+  | $ #{invoice.amount}
+td
+  = invoice.paidOnHumanized
+td
+  | coupon
+td
+  | pricing
+td
+  = invoice.durationText
+td
+  = invoice.sourceType

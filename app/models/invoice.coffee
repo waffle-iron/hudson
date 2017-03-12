@@ -1,4 +1,5 @@
 `import DS from 'ember-data'`
+`import ENUMS from 'hudson/enums'`
 
 Invoice = DS.Model.extend
   user : DS.belongsTo 'user', inverse: 'invoices'
