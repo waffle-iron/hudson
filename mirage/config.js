@@ -1,6 +1,7 @@
 export default function() {
 
    this.get('users', 'user');
+   this.get('users/:id', 'user');
    this.get('/pricings', 'pricing');
    this.get('/pricings/:id', 'pricing');
    this.get('/coupons', 'coupon');

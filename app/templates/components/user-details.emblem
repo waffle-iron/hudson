@@ -1,1 +1,9 @@
-= user.username
+.sub-container
+    p class=showHide:show:hide
+      = user.fullName
+    p class=editUnedit:edit:un-edit
+      = input class="input" placeholder=user.fullName value=user.fullName
+    p class=showHide:show:hide click="editText"
+      = fa-icon "pencil"
+    p class=editUnedit:edit:un-edit click="saveText"
+      = fa-icon "check"
