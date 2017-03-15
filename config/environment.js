@@ -41,7 +41,8 @@ module.exports = function(environment) {
       addUser: 'add_user',
       addPricing: 'add_pricing',
       addCoupon: 'add_coupon',
-      deleteUser: 'delete_user'
+      deleteUser: 'delete_user',
+      deletePricing: 'delete_pricing'
     }
   };
 

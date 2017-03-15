@@ -33,7 +33,11 @@ export default function() {
     return;
    });
 
-   this.post('/delete_user', () => {
+   this.delete('/delete_user', () => {
+    return;
+   });
+
+   this.delete('/delete_pricing', () => {
     return;
    });
 }
