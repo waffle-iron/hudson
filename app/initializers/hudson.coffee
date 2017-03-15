@@ -12,6 +12,9 @@ initialize = (application) ->
   application.inject 'component', 'notify', 'service:notification-messages'
   application.inject 'authenticator', 'notify', 'service:notification-messages'
 
+  # Inject Store
+  application.inject 'component', 'store', 'service:store'
+
 HudsonInitializer =
   name: 'hudson'
   initialize: initialize

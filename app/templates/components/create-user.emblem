@@ -1,0 +1,33 @@
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "user"
+      div
+        | Users
+      div
+        | 140
+  .columns.link-to click="openUserModal"
+    .column.card.is-one-third.margin-auto.pointed-cursor
+      = fa-icon "user-plus"
+      div
+        | ADD USER
+
+= modal-card isActive=showUserModal title="Add User"
+  .card-body
+    .card-wrapper
+      form
+        p.control
+          = input class="form-control input" placeholder="Username" type="text" value=user.username
+        p.control
+          = input class="form-control input" placeholder="Email" type="email" value=user.email
+        p.control
+          = input class="form-control input" placeholder="Password" type="password" value=user.password
+        p.control
+          = input class="form-control input" placeholder="First Name" type="text" value=user.firstName
+        p.control
+          = input class="form-control input" placeholder="Last Name" type="text" value=user.lastName
+        p.control
+          = textarea class="form-control input" placeholder="Namespaces" type="Password" value=user.namespaces
+  .modal-footer
+    button.margin-top10 click="addUser"
+     | Add User

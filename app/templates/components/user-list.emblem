@@ -1,45 +1,12 @@
-.main-container
-  .columns.link-to
-    .column.card.is-one-third.margin-auto
-      = fa-icon "user"
-      div
-        | Users
-      div
-        | 140
-  .columns.link-to click="openUserModal"
-    .column.card.is-one-third.margin-auto.pointed-cursor
-      = fa-icon "user-plus"
-      div
-        | ADD USER
-  .columns
-    .column
-      table.users-table
-        tr
-          th colspan="3"
-            = input class="input" placeholder="Search" value=query
-          th
-            | Delete
-          th
-            | Update
-        each users as |user|
-          = user-overview user=user
-
-= modal-card isActive=showUserModal title="Add User"
-  .card-body
-    .card-wrapper
-      form
-        p.control
-          = input class="form-control input" placeholder="Username" type="text" value=userUsername
-        p.control
-          = input class="form-control input" placeholder="Email" type="email" value=userEmail
-        p.control
-          = input class="form-control input" placeholder="Password" type="Password" value=userPassword
-        p.control
-          = input class="form-control input" placeholder="First Name" type="text" value=userFirstName
-        p.control
-          = input class="form-control input" placeholder="Last Name" type="text" value=userLastName
-        p.control
-          = textarea class="form-control input" placeholder="Namespaces" type="Password" value=userNamespaces
-  .modal-footer
-    button.margin-top10 click="addUser"
-     | Add User
+.columns
+  .column
+    table.users-table
+      tr
+        th colspan="3"
+          = input class="input" placeholder="Search" value=query
+        th
+          | Delete
+        th
+          | Update
+      each users as |user|
+        = user-overview user=user

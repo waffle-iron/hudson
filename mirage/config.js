@@ -21,6 +21,10 @@ export default function() {
     return;
    });
 
+   this.post('/users', () => {
+    return;
+   });
+
    this.post('/add_user', () => {
     return;
    });
