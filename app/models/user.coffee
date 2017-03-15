@@ -3,7 +3,10 @@
 User = DS.Model.extend
   uuid: DS.attr 'string'
   username: DS.attr 'string'
+  email: DS.attr 'string'
+  password: DS.attr 'string'
   firstName: DS.attr 'string'
+  namespaces: DS.attr 'string'
   lastName: DS.attr 'string'
   expiryDate: DS.attr 'date'
   invoices: DS.hasMany 'invoice', inverse:'user'

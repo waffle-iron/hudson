@@ -2,10 +2,14 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'hudson',
-    environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    modulePrefix: 'hudson',
+    environment: environment,
+    notifications: {
+      autoClear: true,
+      duration: 4000 // Milliseconds
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -28,14 +32,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    notifications: {
-      autoClear: true,
-      duration: 4000 // Milliseconds
-    },
     'ember-simple-auth': {
       loginEndPoint: '/login',
       checkEndPoint: '/check',
-      logoutEndPoint: '/logout'
+      logoutEndPoint: '/logout',
+      routeAfterAuthentication: 'authenticated.index',
+      routeIfAlreadyAuthenticated: 'authenticated.index'
     },
     endpoints: {
       addUser: 'add_user',
@@ -52,6 +54,13 @@ module.exports = function(environment) {
       enabled: true
     };
     ENV['host'] = "http://0.0.0.0:8000";
+  }
+
+  if (environment === 'testing') {
+    ENV['ember-cli-mirage'] = {
+      enabled: false
+    };
+    ENV['host'] = "http://192.168.0.162:8000";
   }
 
   if (environment === 'development') {
