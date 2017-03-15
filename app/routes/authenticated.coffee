@@ -1,5 +1,6 @@
 `import Ember from 'ember'`
 `import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin'`
+`import ENV from 'hudson/config/environment'`
 
 location = window.location
 
@@ -13,6 +14,9 @@ AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
   beforeModel: (transition)->
     @set "lastTransition", transition
     @_super transition
+
+  afterModel: ->
+    @get('notify').setDefaultAutoClear ENV.notifications.autoClear
 
   actions:
     invalidateSession: ->

@@ -28,6 +28,10 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    notifications: {
+      autoClear: true,
+      duration: 4000 // Milliseconds
+    },
     'ember-simple-auth': {
       loginEndPoint: '/login',
       checkEndPoint: '/check',
@@ -37,7 +41,7 @@ module.exports = function(environment) {
       addUser: 'add_user',
       addPricing: 'add_pricing',
       addCoupon: 'add_coupon',
-      deleteUser: 'delete_user'  
+      deleteUser: 'delete_user'
     }
   };
 
