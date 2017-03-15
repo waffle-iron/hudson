@@ -18,4 +18,7 @@ PricingOverviewComponent = Ember.Component.extend
           window.location.reload() # FIXME: Hackish Way
         ,
           3 * 1000
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
 `export default PricingOverviewComponent`

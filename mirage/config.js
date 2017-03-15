@@ -40,4 +40,8 @@ export default function() {
    this.delete('/delete_pricing', () => {
     return;
    });
+
+   this.delete('/delete_coupon', () => {
+    return;
+   });
 }

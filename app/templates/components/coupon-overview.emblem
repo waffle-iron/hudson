@@ -5,7 +5,8 @@ td
 td
   = coupon.discount
 td
-  = fa-icon "trash-o"
+  div click="deleteCoupon"
+    = fa-icon "trash-o"
 td
   = link-to "authenticated.coupon" coupon.id
     = fa-icon "pencil-square-o"

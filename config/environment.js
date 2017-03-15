@@ -42,7 +42,8 @@ module.exports = function(environment) {
       addPricing: 'add_pricing',
       addCoupon: 'add_coupon',
       deleteUser: 'delete_user',
-      deletePricing: 'delete_pricing'
+      deletePricing: 'delete_pricing',
+      deleteCoupon: 'delete_coupon'
     }
   };
 
