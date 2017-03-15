@@ -11,25 +11,29 @@ export default function() {
 
    this.post('/login', () => {
     return {user_id: '1', token: 'secret'};
-  });
+   });
 
    this.post('/check', () => {
     return {user_id: '1', token: 'secret'};
-  });
+   });
 
    this.post('/logout', () => {
     return;
-  });
+   });
 
    this.post('/add_user', () => {
     return;
-  });
+   });
 
    this.post('/add_pricing', () => {
     return;
-  });
+   });
 
    this.post('/add_coupon', () => {
     return;
-  });
+   });
+
+   this.post('/delete_user', () => {
+    return;
+   });
 }

@@ -5,7 +5,8 @@ td
 td
   = user.humanizedExpiryDate
 td
-  = fa-icon "trash-o"
+  div click="deleteUser"
+    = fa-icon "trash-o"
 td
   = link-to "authenticated.user" user.id
     = fa-icon "pencil-square-o"
