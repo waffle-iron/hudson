@@ -28,22 +28,21 @@ HudsonAuthenticator = Base.extend
 
   authenticate: (identification, password) ->
     ajax = @get "ajax"
-    that = @
+    that  = @
     new Ember.RSVP.Promise (resolve, reject) ->
       data =
         username: identification
         password: password
 
       url = ENV['ember-simple-auth']['loginEndPoint']
-      ajax.post(url, {data:data})
+      ajax.post(url, {data: data})
       .then (data) ->
         data = processData data
         resolve data
         that.resumeTransistion()
-        window.location = "/" # FIXME: hackish way
       .catch (error) ->
         for error in error.errors
-          that.get("notify").error.details?.message
+          that.get("notify").error error.detail?.message, ENV.notifications
         reject error
 
   restore: (data) ->
@@ -57,28 +56,27 @@ HudsonAuthenticator = Base.extend
         resolve data
         if 'login' in location.pathname
           that.resumeTransistion()
-          window.location = "/" # FIXME: hackish way
       .catch (error) ->
         localStorage.clear()
         for error in error.errors
-          that.get("notify").error error.detail?.message
+          that.get("notify").error error.detail?.message, ENV.notifications
         reject error
 
   invalidate: (data) ->
     ajax = @get "ajax"
-    that = @
     localStorage.clear()
     @set "currentUser", null
+    that  = @
     new Ember.RSVP.Promise (resolve, reject) ->
       url = ENV['ember-simple-auth']['logoutEndPoint']
       ajax.post(url)
-      .then (data) ->
+      .then (data)->
         resolve data
         location.reload()
       .catch (error) ->
         location.reload()
         for error in error.errors
-          that.get("notify").error error.details?.message
+          that.get("notify").error error.detail?.message, ENV.notifications
         reject error
 
 
