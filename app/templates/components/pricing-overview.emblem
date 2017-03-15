@@ -5,7 +5,7 @@ td
 td
   = pricing.price
 td
-  div click="deletePricing"
+  div.pointed-cursor click="deletePricing"
     = fa-icon "trash-o"
 td
   = link-to "authenticated.pricing" pricing.id

@@ -7,7 +7,7 @@
       div
         | 140
   .columns.link-to click="openUserModal"
-    .column.card.is-one-third.margin-auto
+    .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "user-plus"
       div
         | ADD USER

@@ -5,7 +5,7 @@
       div
         | Coupons
   .columns.link-to click="openCouponModal"
-    .column.card.is-one-third.margin-auto
+    .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "fa-plus"
       div
         | ADD COUPON

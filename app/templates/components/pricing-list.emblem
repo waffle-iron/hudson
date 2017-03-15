@@ -7,7 +7,7 @@
       div
         | 20
   .columns.link-to click="openPricingModal"
-    .column.card.is-one-third.margin-auto
+    .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "fa-plus"
       div
         | ADD PRICING
