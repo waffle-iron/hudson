@@ -1,4 +1,7 @@
+import config from 'hudson/config/environment';
 export default function() {
+
+   this.namespace = config.host + "/" +  config.namespace;
 
    this.get('users', 'user');
    this.get('users/:id', 'user');

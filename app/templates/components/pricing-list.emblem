@@ -1,41 +1,12 @@
-.main-container
-  .columns.link-to
-    .column.card.is-one-third.margin-auto
-      = fa-icon "usd"
-      div
-        | Pricings
-      div
-        | 20
-  .columns.link-to click="openPricingModal"
-    .column.card.is-one-third.margin-auto.pointed-cursor
-      = fa-icon "fa-plus"
-      div
-        | ADD PRICING
-  .columns
-    .column
-      table.users-table
-        tr
-          th colspan="3"
-            = input class="input" placeholder="Search" value=query
-          th
-            | Delete
-          th
-            | Update
-        each pricings as |pricing|
-          = pricing-overview pricing=pricing
-
-  = modal-card isActive=showPricingModal title="Add Pricing"
-    .card-body
-      .card-wrapper
-        form
-          p.control
-            = input class="form-control input" placeholder="Name" type="text" value=pricingName
-          p.control
-            = input class="form-control input" placeholder="Price" type="number" value=pricingPrice
-          p.control
-            = input class="form-control input" placeholder="Project Limit" type="number" value=pricingLimit
-          p.control
-            = textarea class="form-control input" placeholder="Description" type="text" value=pricingDescription
-    .modal-footer
-      button.margin-top10 click="addPricing"
-       | Add Pricing
+.columns
+  .column
+    table.users-table
+      tr
+        th colspan="3"
+          = input class="input" placeholder="Search" value=query
+        th
+          | Delete
+        th
+          | Update
+      each pricings as |pricing|
+        = pricing-overview pricing=pricing
