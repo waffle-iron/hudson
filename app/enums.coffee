@@ -8,7 +8,7 @@ ENUMS =
     INSTALLING: 5
     LAUNCHING: 6
     HOOKING: 7
-    
+
   PAYMENT_DURATION:
     MONTHLY: 1
     QUATERLY: 3
@@ -21,6 +21,11 @@ ENUMS =
     BANK_TRANSFER: 3
     MANUAL: 4
     STRIPE_RECURRING: 5
+
+  COLLABORATION_ROLE:
+    ADMIN: 0
+    MANAGER: 1
+    READ_ONLY: 2  
 
 # Populate `CHOICES`
 for enumName, enumValues of ENUMS
