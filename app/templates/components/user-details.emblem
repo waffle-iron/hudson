@@ -1,9 +1,49 @@
 .sub-container
-    p class=showHide:show:hide
-      = user.fullName
-    p class=editUnedit:edit:un-edit
-      = input class="input" placeholder=user.fullName value=user.fullName
-    p class=showHide:show:hide click="editText"
-      = fa-icon "pencil"
-    p class=editUnedit:edit:un-edit click="saveText"
-      = fa-icon "check"
+  .columns
+    .column
+      h2
+        = user.fullName
+  .columns
+    .column
+      h4
+        / = user.colloboration.role
+        | Manager
+    .column.content-right
+      h4
+        | Start Date: 27th August 2016
+  hr.horizontal-seperator
+  table
+    thead
+      tr
+        th
+          | EMAIL
+        th
+          | USERNAME
+        th
+          | PASSWORD
+        th
+          | STATUS
+      tr
+        td
+          = user.email
+        td
+          = user.username
+        td
+          = user.password
+        td
+          | active
+  .columns
+    .column.is-half
+      .tabs.is-boxed
+        ul
+          li.is-active
+            a
+              | OVERVIEW
+
+          li
+            a
+              | NAMESPACE
+
+          li
+            a
+              | SUBSCRIPTION

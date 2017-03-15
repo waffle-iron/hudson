@@ -5,6 +5,8 @@ export default Factory.extend({
     return i+1;
   },
   uuid: faker.random.number,
+  email: faker.internet.email,
+  password: faker.internet.password,
   username: faker.name.firstName,
   firstName: faker.name.firstName,
   lastName: faker.name.lastName,

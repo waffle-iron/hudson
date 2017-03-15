@@ -12,15 +12,14 @@ User = DS.Model.extend
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
 
-  # humanizedExpiryDate: (->
-  #   expiryDate = @get "expiryDate"
-  #   expiryDate.toLocaleDateString()
-  # ).property "expiryDate"
+  humanizedExpiryDate: (->
+    expiryDate = @get "expiryDate"
+    expiryDate.toLocaleDateString()
+  ).property "expiryDate"
 
   fullName: (->
     firstName = @get "firstName"
     lastName = @get "lastName"
-    debugger
     firstName + " " + lastName
   ).property "firstName","lastName"
 `export default User`
