@@ -36,14 +36,14 @@
     .column.is-half
       .tabs.is-boxed
         ul
-          li.is-active
-            a
+          li class=overviewClass
+            a click="displayOverview"
               | OVERVIEW
 
-          li
-            a
+          li class=namespaceClass
+            a click="displayNamespace"
               | NAMESPACE
 
-          li
-            a
+          li class=subscriptionClass
+            a click="displaySubscription"
               | SUBSCRIPTION
