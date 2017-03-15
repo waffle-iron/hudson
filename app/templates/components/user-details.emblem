@@ -47,3 +47,31 @@
           li class=subscriptionClass
             a click="displaySubscription"
               | SUBSCRIPTION
+  if isOverview
+    .columns
+      .column.box.is-one-quarter.margin-top10
+        = fa-icon "user"
+        div
+          | Projects Added
+        div
+          | 140
+
+  else if isNamespace
+    .columns
+     .column.box.is-one-quarter.margin-top10
+        div
+          form
+            p.control
+              = input type="checkbox"
+              | Any Namespace
+            p.control
+              = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
+            button click="addNamespaces"
+              | ADD NAMESPACES
+  else
+     .columns
+      .column.box.is-one-quarter.margin-top10
+        div click="addSubscription"
+          = fa-icon "trash-o"
+        div
+          | ADD SUBSCRIPTION

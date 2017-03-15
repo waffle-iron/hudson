@@ -9,6 +9,7 @@ User = DS.Model.extend
   namespaces: DS.attr 'string'
   lastName: DS.attr 'string'
   expiryDate: DS.attr 'date'
+  projectCount: DS.attr 'number'
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
 
