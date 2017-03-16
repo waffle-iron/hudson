@@ -49,7 +49,7 @@ module.exports = function(environment) {
     }
   };
 
-  if (environment === 'yashwin') {
+  if (environment === 'mirage') {
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
