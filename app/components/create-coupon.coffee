@@ -3,15 +3,16 @@
 
 CreateCouponComponent = Ember.Component.extend
 
+  coupon: (->
+    @get('store').createRecord('coupon')
+  ).property()
+
   actions:
 
     addCoupon: ->
       that = @
-      data =
-        name: @get "CouponName"
-        price: @get "CouponPrice"
-
-      @get("ajax").post ENV.endpoints.addCoupon, data:data
+      coupon = @get 'coupon'
+      coupon.save()
       .then (data)->
         that.send "closeModal"
         that.get("notify").success "Coupon added!"

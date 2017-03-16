@@ -15,9 +15,9 @@
     .card-wrapper
       form
         p.control
-          = input class="form-control input" placeholder="Name" type="text" value=couponName
+          = input class="form-control input" placeholder="Name" type="text" value=coupon.code
         p.control
-          = input class="form-control input" placeholder="Price" type="number" value=couponPrice
+          = input class="form-control input" placeholder="Price" type="number" value=coupon.discount
   .modal-footer
     button.margin-top10 click="addCoupon"
      | Add Coupon
