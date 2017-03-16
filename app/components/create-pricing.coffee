@@ -3,17 +3,16 @@
 
 CreatePricingComponent = Ember.Component.extend
 
+  pricing: (->
+    @get('store').createRecord('pricing')
+  ).property()
+
   actions:
 
     addPricing: ->
       that = @
-      data =
-        name: @get "pricingName"
-        price: @get "pricingPrice"
-        projectLimit: @get "pricingLimit"
-        description: @get "pricingDescription"
-
-      @get("ajax").post ENV.endpoints.addPricing, data:data
+      pricing = @get 'pricing'
+      pricing.save()
       .then (data)->
         that.send "closeModal"
         that.get("notify").success "Pricing added!"

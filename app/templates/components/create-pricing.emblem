@@ -17,13 +17,13 @@
     .card-wrapper
       form
         p.control
-          = input class="form-control input" placeholder="Name" type="text" value=pricingName
+          = input class="form-control input" placeholder="Name" type="text" value=pricing.name
         p.control
-          = input class="form-control input" placeholder="Price" type="number" value=pricingPrice
+          = input class="form-control input" placeholder="Price" type="number" value=pricing.price
         p.control
-          = input class="form-control input" placeholder="Project Limit" type="number" value=pricingLimit
+          = input class="form-control input" placeholder="Project Limit" type="number" value=pricing.projectsLimit
         p.control
-          = textarea class="form-control input" placeholder="Description" type="text" value=pricingDescription
+          = textarea class="form-control input" placeholder="Description" type="text" value=pricing.description
   .modal-footer
     button.margin-top10 click="addPricing"
      | Add Pricing
