@@ -20,7 +20,7 @@ module.exports = function(environment) {
         Date: false
       }
     },
-    namespace: "api",
+    namespace: "hudson",
     host: "https://api.appknox.com",
     'ember-cli-mirage': {
       enabled: false
