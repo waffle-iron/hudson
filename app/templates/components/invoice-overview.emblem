@@ -1,13 +1,13 @@
 td
-  | username
+  = invoice.user.username
 td
   | $ #{invoice.amount}
 td
   = invoice.paidOnHumanized
 td
-  | coupon
+  = invoice.coupon.code
 td
-  | pricing
+  = invoice.pricing.name
 td
   = invoice.durationText
 td
