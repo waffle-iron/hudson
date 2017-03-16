@@ -13,6 +13,13 @@ CreateUserComponent = Ember.Component.extend
       that = @
       user = @get 'user'
       user.save()
+      .then (data) ->
+        that.send "closeModal"
+        that.get("notify").success "User added!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+
 
     openUserModal: ->
         @set "showUserModal", true
