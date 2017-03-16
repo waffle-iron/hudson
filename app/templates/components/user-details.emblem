@@ -58,13 +58,13 @@
 
   else if isNamespace
     .columns
-     .column.box.is-one-quarter.margin-top10
+     .column.box.is-one-third.margin-top10
         div
-          form
+          form.namespace-form
             p.control
-              = input type="checkbox"
-              | Any Namespace
-            p.control
+              = input class="form-control" type="checkbox"
+              | &nbsp; Any Namespace
+            p.control.is-fullwidth
               = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
             button click="addNamespaces"
               | ADD NAMESPACES
