@@ -6,6 +6,9 @@ UserDetailsComponent = Ember.Component.extend
   isNamespace: false
   isSubscription: false
 
+  addSubscription: true
+  subscriptionForm: false
+
   overviewClass: Ember.computed "isOverview", ->
     if @get "isOverview"
       "is-active"
@@ -31,7 +34,15 @@ UserDetailsComponent = Ember.Component.extend
       @set "isOverview", false
       @set "isNamespace", false
       @set "isSubscription", true
-      
+
+    openSubscriptionForm: ->
+      @set "addSubscription", false
+      @set "subscriptionForm", true
+
+    closeSubscriptionForm: ->
+      @set "addSubscription", true
+      @set "subscriptionForm", false
+
 
 
 

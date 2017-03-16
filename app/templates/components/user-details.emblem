@@ -71,7 +71,11 @@
   else
      .columns
       .column.box.is-one-quarter.margin-top10
-        div click="addSubscription"
-          = fa-icon "trash-o"
-        div
-          | ADD SUBSCRIPTION
+        if addSubscription
+          div click="openSubscriptionForm"
+            = fa-icon "trash-o"
+          div
+            | ADD SUBSCRIPTION
+        else
+          div click="closeSubscriptionForm"
+            | cancel   
