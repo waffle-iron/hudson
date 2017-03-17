@@ -65,17 +65,68 @@
               = input class="form-control" type="checkbox"
               | &nbsp; Any Namespace
             p.control.is-fullwidth
-              = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
+              = textarea class="form-control input" placeholder=user.namespaces type="text" value=user.namespaces
             button click="addNamespaces"
               | ADD NAMESPACES
   else
-     .columns
-      .column.box.is-one-quarter.margin-top10
-        if addSubscription
-          div click="openSubscriptionForm"
-            = fa-icon "trash-o"
-          div
-            | ADD SUBSCRIPTION
-        else
-          div click="closeSubscriptionForm"
-            | cancel   
+    if addSubscription
+      .columns
+       .column.box.is-one-quarter.margin-top10
+        div click="openSubscriptionForm"
+          = fa-icon "trash-o"
+        div
+          | ADD SUBSCRIPTION
+    else
+      .columns
+        .column.is-half
+          .columns
+            .column.is-half
+              .box
+                | Pricing
+                span
+                  select.input
+                    each pricings as |pricing|
+                      option value=pricing.name
+                        = pricing.name
+            .column.is-half
+              .box
+                | Coupon
+                select.input
+                  each coupons as |coupon|
+                    option value=coupon.code
+                      = coupon.code
+          .columns
+            .column
+              .box
+                | Source
+                select.input
+                  each sources as |source|
+                    option value=pricing.name
+                      = pricing.name
+        .column.is-half
+          .columns
+            .column.is-half
+              .box
+                h5
+                  | PAY PER SCAN
+            .column.is-half
+              .box
+                h5
+                  | PAY PER MONTH
+          .columns
+            .column.is-half
+              .box
+                | Scans Left
+                br
+                = input type=number
+            .column.is-half
+              .box
+                | Expiry Date
+                = input type=date
+
+      .columns
+        .column
+          button click="closeSubscriptionForm"
+            | cancel
+          button
+            | update
