@@ -10,9 +10,6 @@
     .column
       table.users-table
         tr
-          th colspan="8"
-            = input class="input" placeholder="Search" value=query
-        tr
           th
             | User
           th
@@ -27,7 +24,5 @@
             | Payment Duration
           th
             | Payment Source
-          th
-            | Invoice Type
         each invoices as |invoice|
           = invoice-overview invoice=invoice

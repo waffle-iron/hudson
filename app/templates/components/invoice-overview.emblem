@@ -12,5 +12,3 @@ td
   = invoice.durationText
 td
   = invoice.sourceType
-td
-  | Manual
