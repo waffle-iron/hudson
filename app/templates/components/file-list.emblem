@@ -1,0 +1,24 @@
+.main-container
+  .columns.link-to
+    .column.card.is-one-third.margin-auto
+      = fa-icon "tasks"
+      div
+        | Files
+      div
+        | 350
+
+.sub-container
+  .columns
+    .column
+      table.users-table
+        tr
+          th
+            | File Id
+          th
+            | Created On
+          th
+            | Username
+          th
+            | Package Name
+        each files as |file|
+          = file-overview file=file

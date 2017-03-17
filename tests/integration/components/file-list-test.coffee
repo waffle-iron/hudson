@@ -1,7 +1,7 @@
 `import { test, moduleForComponent } from 'ember-qunit'`
 `import hbs from 'htmlbars-inline-precompile'`
 
-moduleForComponent 'scan-overview', 'Integration | Component | scan overview', {
+moduleForComponent 'file-list', 'Integration | Component | file list', {
   integration: true
 }
 
@@ -11,15 +11,15 @@ test 'it renders', (assert) ->
   # Set any properties with @set 'myProperty', 'value'
   # Handle any actions with @on 'myAction', (val) ->
 
-  @render hbs """{{scan-overview}}"""
+  @render hbs """{{file-list}}"""
 
   assert.equal @$().text().trim(), ''
 
   # Template block usage:
   @render hbs """
-    {{#scan-overview}}
+    {{#file-list}}
       template block text
-    {{/scan-overview}}
+    {{/file-list}}
   """
 
   assert.equal @$().text().trim(), 'template block text'

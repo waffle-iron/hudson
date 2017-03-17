@@ -1,8 +1,8 @@
 `import Ember from 'ember'`
 
-AuthenticatedScansRoute = Ember.Route.extend
+AuthenticatedFilesRoute = Ember.Route.extend
 
   model: (params) ->
     @get('store').findAll('file')
 
-`export default AuthenticatedScansRoute`
+`export default AuthenticatedFilesRoute`

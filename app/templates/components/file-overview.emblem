@@ -1,0 +1,8 @@
+td
+  = file.id
+td
+  | 12-02-2017
+td
+  = file.user.username
+td
+  = file.name
