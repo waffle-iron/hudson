@@ -8,11 +8,11 @@ User = DS.Model.extend
   firstName: DS.attr 'string'
   namespaces: DS.attr 'string'
   lastName: DS.attr 'string'
-  expiryDate: DS.attr 'date'
   projectCount: DS.attr 'number'
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
   files: DS.hasMany 'file', inverse:'user'
+  subscriptions: DS.hasMany 'subscription', inverse:'user'
 
   humanizedExpiryDate: (->
     expiryDate = @get "expiryDate"

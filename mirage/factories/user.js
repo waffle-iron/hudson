@@ -10,6 +10,5 @@ export default Factory.extend({
   username: faker.name.firstName,
   firstName: faker.name.firstName,
   lastName: faker.name.lastName,
-  expiryDate: faker.date.future,
   projectCount: faker.random.number
 });
