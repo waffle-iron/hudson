@@ -1,9 +1,7 @@
 td
   = user.username
 td
-  = user.colloboration.roleHumanized
-td
-  = user.expiryDate
+  = user.subscription.humanizedExpiryDate
 td
   div.pointed-cursor click="deleteUser"
     = fa-icon "trash-o"

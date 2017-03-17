@@ -14,11 +14,6 @@ User = DS.Model.extend
   files: DS.hasMany 'file', inverse:'user'
   subscriptions: DS.hasMany 'subscription', inverse:'user'
 
-  humanizedExpiryDate: (->
-    expiryDate = @get "expiryDate"
-    expiryDate.toLocaleDateString()
-  ).property "expiryDate"
-
   fullName: (->
     firstName = @get "firstName"
     lastName = @get "lastName"
