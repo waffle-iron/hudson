@@ -1,7 +1,7 @@
 td
   = file.id
 td
-  | 12-02-2017
+  = file.createdOnHumanized
 td
   = file.user.username
 td

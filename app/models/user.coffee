@@ -12,6 +12,7 @@ User = DS.Model.extend
   projectCount: DS.attr 'number'
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
+  files: DS.hasMany 'file', inverse:'user'
 
   humanizedExpiryDate: (->
     expiryDate = @get "expiryDate"
