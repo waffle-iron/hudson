@@ -1,7 +1,8 @@
 `import DS from 'ember-data'`
 `import ENUMS from 'hudson/enums'`
+`import BaseModelMixin from 'hudson/mixins/base-model'`
 
-File = DS.Model.extend
+File = DS.Model.extend BaseModelMixin,
   uuid: DS.attr 'string'
   name: DS.attr 'string'
   dynamicStatus: DS.attr 'number'
