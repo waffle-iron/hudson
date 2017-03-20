@@ -1,33 +1,28 @@
 .sub-container
   .columns
-    .column
-      h2
-        = user.fullName
-  .columns
-    .column
-      h4
-        / = user.colloboration.role
-        | Manager
     .column.content-right
       h4
         | Start Date: 27th August 2016
-  hr.horizontal-seperator
   table
     thead
       tr
         th
-          | EMAIL
+          | NAME
         th
           | USERNAME
+        th
+          | EMAIL
         th
           | PASSWORD
         th
           | STATUS
       tr
         td
-          = user.email
+          = user.fullName
         td
           = user.username
+        td
+          = user.email
         td
           = user.password
         td
