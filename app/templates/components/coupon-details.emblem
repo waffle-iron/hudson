@@ -1,1 +1,30 @@
-= coupon.code
+.sub-container
+  table
+    thead
+      tr
+        th
+          | COUPON
+        th
+          | PRICE
+        th
+          | EDIT
+      tr
+        td
+          p class=showHide:show:hide
+            = coupon.code
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=coupon.code value=coupon.code
+        td
+          p class=showHide:show:hide
+            = coupon.discount
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=coupon.discount value=coupon.discount
+        td
+          p class=showHide:show:hide click="editText"
+            = fa-icon "pencil"
+
+          p class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "check"
+
+          p.margin-left class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "times"

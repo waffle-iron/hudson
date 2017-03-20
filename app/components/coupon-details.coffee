@@ -1,5 +1,18 @@
 `import Ember from 'ember'`
 
-CouponDetailsComponent = Ember.Component.extend()
+CouponDetailsComponent = Ember.Component.extend
+
+  showHide: true
+  editUnedit: false
+
+  actions:
+
+    editText: ->
+      @set "showHide", false
+      @set "editUnedit", true
+
+    saveText: ->
+      @set "showHide", true
+      @set "editUnedit", false
 
 `export default CouponDetailsComponent`
