@@ -2,7 +2,8 @@
   .columns
     .column.content-right
       h4
-        | Start Date: 27th August 2016
+        | Start Date:
+        | &nbsp; #{user.dateJoinedHumanized}
   table
     thead
       tr
@@ -40,7 +41,7 @@
           p class=editUnedit:edit:un-edit
             = input class="input" placeholder=user.password value=user.password
         td
-          | active
+          = user.userStatus
         td
           p class=showHide:show:hide click="editText"
             = fa-icon "pencil"

@@ -10,5 +10,8 @@ export default Factory.extend({
   username: faker.name.firstName,
   firstName: faker.name.firstName,
   lastName: faker.name.lastName,
-  projectCount: faker.random.number
+  namespaces: faker.internet.domainName,
+  projectCount: faker.random.number,
+  dateJoined: faker.date.past,
+  isActive: faker.random.boolean
 });
