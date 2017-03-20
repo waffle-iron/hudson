@@ -123,15 +123,19 @@
                     option value=pricing.name
                       = pricing.name
         .column.is-half
-          .columns
-            .column.is-half
-              .box
-                h5
-                  | PAY PER SCAN
-            .column.is-half
-              .box
-                h5
-                  | PAY PER MONTH
+          .columns.margin-auto
+            form.scan-type
+              .column
+                .box
+                  h5
+                    = input class="form-control" type="radio" name="scan" value="scan"
+                    | &nbsp; PAY PER SCAN
+
+              .column
+                .box
+                  h5
+                    = input class="form-control" type="radio" name="scan" value="month"
+                    | &nbsp; PAY PER MONTH
           .columns
             .column.is-half
               .box
