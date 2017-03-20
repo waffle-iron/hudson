@@ -54,7 +54,4 @@ UserDetailsComponent = Ember.Component.extend
       @set "showHide", true
       @set "editUnedit", false
 
-
-
-
 `export default UserDetailsComponent`
