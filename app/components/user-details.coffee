@@ -9,6 +9,9 @@ UserDetailsComponent = Ember.Component.extend
   addSubscription: true
   subscriptionForm: false
 
+  showHide: true
+  editUnedit: false
+
   overviewClass: Ember.computed "isOverview", ->
     if @get "isOverview"
       "is-active"
@@ -43,7 +46,13 @@ UserDetailsComponent = Ember.Component.extend
       @set "addSubscription", true
       @set "subscriptionForm", false
 
+    editText: ->
+      @set "showHide", false
+      @set "editUnedit", true
 
+    saveText: ->
+      @set "showHide", true
+      @set "editUnedit", false
 
 
 

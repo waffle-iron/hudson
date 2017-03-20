@@ -16,17 +16,40 @@
           | PASSWORD
         th
           | STATUS
+        th
+          | EDIT
       tr
         td
-          = user.fullName
+          p class=showHide:show:hide
+            = user.fullName
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=user.fullName value=user.fullName
         td
-          = user.username
+          p class=showHide:show:hide
+            = user.username
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=user.username value=user.username
         td
-          = user.email
+          p class=showHide:show:hide
+            = user.email
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=user.email value=user.email
         td
-          = user.password
+          p class=showHide:show:hide
+            = user.password
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=user.password value=user.password
         td
           | active
+        td
+          p class=showHide:show:hide click="editText"
+            = fa-icon "pencil"
+
+          p class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "check"
+
+          p.margin-left class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "times"
   .columns
     .column.is-half
       .tabs.is-boxed
