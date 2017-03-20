@@ -73,7 +73,7 @@
         div
           | Projects Added
         div
-          | 14
+          = user.projectCount
 
   else if isNamespace
     .columns
