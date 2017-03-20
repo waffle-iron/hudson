@@ -7,4 +7,9 @@ Pricing = DS.Model.extend
   projectsLimit: DS.attr "number"
   invoices: DS.hasMany 'invoice', inverse:'pricing'
 
+  descriptionItems:(->
+    description = @get "description"
+    description?.split ","
+  ).property "description"
+
 `export default Pricing`

@@ -1,1 +1,44 @@
-= pricing.name
+.sub-container
+  table
+    thead
+      tr
+        th
+          | NAME
+        th
+          | PRICE
+        th
+          | PROJECTS LIMIT
+        th
+          | DESCRIPTION
+        th
+          | EDIT
+      tr
+        td
+          p class=showHide:show:hide
+            = pricing.name
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=pricing.name value=pricing.name
+        td
+          p class=showHide:show:hide
+            = pricing.price
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=pricing.price value=pricing.price
+        td
+          p class=showHide:show:hide
+            = pricing.projectsLimit
+          p class=editUnedit:edit:un-edit
+            = input class="input" placeholder=pricing.projectsLimit value=pricing.projectsLimit
+        td
+          p class=showHide:show:hide
+            = pricing.descriptionItems
+          p class=editUnedit:edit:un-edit
+            = textarea class="input" placeholder=pricing.descriptionItems value=pricing.descriptionItems
+        td
+          p class=showHide:show:hide click="editText"
+            = fa-icon "pencil"
+
+          p class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "check"
+
+          p.margin-left class=editUnedit:edit:un-edit click="saveText"
+            = fa-icon "times"
