@@ -89,12 +89,12 @@
               | ADD NAMESPACES
   else
     if addSubscription
-      .columns
-       .column.box.is-one-quarter.margin-top10
-        div click="openSubscriptionForm"
-          = fa-icon "trash-o"
-        div
-          | ADD SUBSCRIPTION
+      .columns.add-subscription click="openSubscriptionForm"
+        .column.box.is-one-quarter.margin-top10
+          div
+            = fa-icon "tags"
+          div
+            | ADD SUBSCRIPTION
     else
       .columns
         .column.is-half
