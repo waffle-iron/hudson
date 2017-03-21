@@ -24,8 +24,8 @@ PricingDetailsComponent = Ember.Component.extend
       pricing = @get 'pricing'
       pricing.save()
       .then (data) ->
-        @set "showHide", true
-        @set "editUnedit", false
+        that.set "showHide", true
+        that.set "editUnedit", false
         that.get("notify").success "Pricing Updated!"
       .catch (error) ->
         for error in error.errors

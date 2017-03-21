@@ -24,8 +24,8 @@ CouponDetailsComponent = Ember.Component.extend
       coupon = @get 'coupon'
       coupon.save()
       .then (data) ->
-        @set "showHide", true
-        @set "editUnedit", false
+        that.set "showHide", true
+        that.set "editUnedit", false
         that.get("notify").success "Coupon Updated!"
       .catch (error) ->
         for error in error.errors

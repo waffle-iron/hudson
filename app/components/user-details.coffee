@@ -63,15 +63,15 @@ UserDetailsComponent = Ember.Component.extend
 
     cancelForm: ->
       @set "showHide", true
-      @set "editUnedit", false  
+      @set "editUnedit", false
 
     saveText: ->
       that = @
       user = @get 'user'
       user.save()
       .then (data) ->
-        @set "showHide", true
-        @set "editUnedit", false
+        that.set "showHide", true
+        that.set "editUnedit", false
         that.get("notify").success "User Updated!"
       .catch (error) ->
         for error in error.errors
