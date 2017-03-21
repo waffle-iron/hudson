@@ -145,7 +145,7 @@
             .column.is-half
               .box
                 | Expiry Date
-                = input type=date
+                = date-picker date=mydate valueFormat='YYYY-MM-DD'
 
       .columns
         .column
