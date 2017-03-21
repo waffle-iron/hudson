@@ -2,6 +2,10 @@
 
 CouponDetailsComponent = Ember.Component.extend
 
+  coupon: (->
+    @get('store').createRecord('coupon/:id')
+  ).property()
+
   showHide: true
   editUnedit: false
 
@@ -11,8 +15,20 @@ CouponDetailsComponent = Ember.Component.extend
       @set "showHide", false
       @set "editUnedit", true
 
-    saveText: ->
+    cancelForm: ->
       @set "showHide", true
       @set "editUnedit", false
+
+    saveText: ->
+      that = @
+      coupon = @get 'coupon'
+      coupon.save()
+      .then (data) ->
+        @set "showHide", true
+        @set "editUnedit", false
+        that.get("notify").success "Coupon Updated!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
 
 `export default CouponDetailsComponent`

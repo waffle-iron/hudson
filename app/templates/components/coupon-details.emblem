@@ -26,5 +26,5 @@
           p class=editUnedit:edit:un-edit click="saveText"
             = fa-icon "check"
 
-          p.margin-left class=editUnedit:edit:un-edit click="saveText"
+          p.margin-left class=editUnedit:edit:un-edit click="cancelForm"
             = fa-icon "times"
