@@ -52,7 +52,7 @@
           p.margin-left class=editUnedit:edit:un-edit click="saveText"
             = fa-icon "times"
   .columns
-    .column.is-half
+    .column
       .tabs.is-boxed
         ul
           li class=overviewClass
@@ -68,7 +68,7 @@
               | SUBSCRIPTION
   if isOverview
     .columns.link-to
-      .column.card.is-one-quarter.margin-top10
+      .column.card.is-one-third.margin-top10
         = fa-icon "user"
         div
           | Projects Added
@@ -88,62 +88,61 @@
             button click="addNamespaces"
               | ADD NAMESPACES
   else
-    if addSubscription
-      .columns.add-subscription click="openSubscriptionForm"
-        .column.box.is-one-quarter.margin-top10
-          div
-            = fa-icon "tags"
-          div
-            | ADD SUBSCRIPTION
-    else
-      .columns
-        .column.is-half
-          .columns
-            .column.is-half
-              .box
-                | Pricing
-                span
-                  select.input
-                    each pricings as |pricing|
-                      option value=pricing.name
-                        = pricing.name
-            .column.is-half
-              .box
-                | Coupon
+    .columns.add-subscription
+      .column.box.margin-top10.is-one-third class=addSubscription:show:hide click="openSubscriptionForm"
+        div
+          = fa-icon "tags"
+        div
+          | ADD SUBSCRIPTION
+
+    .columns
+      .column.is-half class=subscriptionForm:show:hide
+        .columns
+          .column
+            .box
+              | Pricing
+              span
                 select.input
-                  each coupons as |coupon|
-                    option value=coupon.code
-                      = coupon.code
-          .columns
-            .column
-              .box
-                | Source
-                select.input
-                  each sources as |source|
+                  each pricings as |pricing|
                     option value=pricing.name
                       = pricing.name
-      .columns
-        .column.is-one-quarter
-          select.input{action 'selectPlan' on='change'} id="select-plan-type"
-            option value=0
-              | PAY PER SCAN
-            option value=1
-              | PAY PER MONTH
+          .column
+            .box
+              | Coupon
+              select.input
+                each coupons as |coupon|
+                  option value=coupon.code
+                    = coupon.code
+        .columns
+          .column
+            .box
+              | Source
+              select.input
+                each sources as |source|
+                  option value=pricing.name
+                    = pricing.name
+        .columns
+          .column.is-half
+            select.input{action 'selectPlan' on='change'} id="select-plan-type"
+              option value=0
+                | PAY PER SCAN
+              option value=1
+                | PAY PER MONTH
 
-      .columns class=showScansLeft:show:hide
-        .column
-            | Scans Left
-            br
-            = input type=number
-      .columns class=showExpiryDate:show:hide
-        .column
-            | Expiry Date
-            br
-            = date-picker date=mydate valueFormat='YYYY-MM-DD'
+        .columns class=showScansLeft:show:hide
+          .column
+              | Scans Left
+              br
+              = input type=number
+        .columns class=showExpiryDate:show:hide
+          .column
+              | Expiry Date
+              br
+              = date-picker date=mydate valueFormat='YYYY-MM-DD'
 
-      .columns
-        .column
-          button.is-primary click="closeSubscriptionForm"
-            | cancel
-          button.is-primary.margin-left
-            | update
+        .columns
+          .column
+            button.is-primary click="closeSubscriptionForm"
+              | cancel
+            button.is-primary.margin-left
+              | update
