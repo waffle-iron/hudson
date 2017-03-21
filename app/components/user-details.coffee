@@ -3,6 +3,10 @@
 
 UserDetailsComponent = Ember.Component.extend
 
+  user: (->
+    @get('store').createRecord('user')
+  ).property()
+
   isOverview: true
   isNamespace: false
   isSubscription: false
@@ -57,9 +61,21 @@ UserDetailsComponent = Ember.Component.extend
       @set "showHide", false
       @set "editUnedit", true
 
-    saveText: ->
+    cancelForm: ->
       @set "showHide", true
-      @set "editUnedit", false
+      @set "editUnedit", false  
+
+    saveText: ->
+      that = @
+      user = @get 'user'
+      user.save()
+      .then (data) ->
+        @set "showHide", true
+        @set "editUnedit", false
+        that.get("notify").success "User Updated!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
 
     selectPlan: ->
       planType = parseInt @$('#select-plan-type').val()

@@ -24,22 +24,22 @@
           p class=showHide:show:hide
             = user.fullName
           p class=editUnedit:edit:un-edit
-            = input class="input" placeholder=user.fullName value=user.fullName
+            = input class="input" type="text" placeholder=user.fullName value=user.fullName
         td
           p class=showHide:show:hide
             = user.username
           p class=editUnedit:edit:un-edit
-            = input class="input" placeholder=user.username value=user.username
+            = input class="input" type="text" placeholder=user.username value=user.username
         td
           p class=showHide:show:hide
             = user.email
           p class=editUnedit:edit:un-edit
-            = input class="input" placeholder=user.email value=user.email
+            = input class="input" type="email" placeholder=user.email value=user.email
         td
           p class=showHide:show:hide
             = user.password
           p class=editUnedit:edit:un-edit
-            = input class="input" placeholder=user.password value=user.password
+            = input class="input" type="password" placeholder=user.password value=user.password
         td
           = user.userStatus
         td
@@ -49,7 +49,7 @@
           p class=editUnedit:edit:un-edit click="saveText"
             = fa-icon "check"
 
-          p.margin-left class=editUnedit:edit:un-edit click="saveText"
+          p.margin-left class=editUnedit:edit:un-edit click="cancelForm"
             = fa-icon "times"
   .columns
     .column
