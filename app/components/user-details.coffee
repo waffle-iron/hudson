@@ -1,4 +1,5 @@
 `import Ember from 'ember'`
+`import ENUMS from 'hudson/enums'`
 
 UserDetailsComponent = Ember.Component.extend
 
@@ -6,11 +7,17 @@ UserDetailsComponent = Ember.Component.extend
   isNamespace: false
   isSubscription: false
 
+  scansLeft: true
+  expiryDate: true
+
   addSubscription: true
   subscriptionForm: false
 
   showHide: true
   editUnedit: false
+
+  showScansLeft: true
+  showExpiryDate: false
 
   overviewClass: Ember.computed "isOverview", ->
     if @get "isOverview"
@@ -53,5 +60,15 @@ UserDetailsComponent = Ember.Component.extend
     saveText: ->
       @set "showHide", true
       @set "editUnedit", false
+
+    selectPlan: ->
+      planType = parseInt @$('#select-plan-type').val()
+      if planType is ENUMS.PLAN_TYPE.PER_SCAN
+        @set "showScansLeft", true
+        @set "showExpiryDate", false
+      else
+        @set "showScansLeft", false
+        @set "showExpiryDate", true
+
 
 `export default UserDetailsComponent`

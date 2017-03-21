@@ -25,7 +25,11 @@ ENUMS =
   COLLABORATION_ROLE:
     ADMIN: 0
     MANAGER: 1
-    READ_ONLY: 2  
+    READ_ONLY: 2
+
+  PLAN_TYPE:
+    PER_SCAN: 0
+    PER_MONTH: 1
 
 # Populate `CHOICES`
 for enumName, enumValues of ENUMS

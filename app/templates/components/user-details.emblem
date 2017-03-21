@@ -122,30 +122,24 @@
                   each sources as |source|
                     option value=pricing.name
                       = pricing.name
-        .column.is-half
-          .columns.margin-auto
-            form.scan-type
-              .column
-                .box
-                  h5
-                    = input class="form-control" type="radio" name="scan" value="scan"
-                    | &nbsp; PAY PER SCAN
+      .columns
+        .column.is-one-quarter
+          select.input{action 'selectPlan' on='change'} id="select-plan-type"
+            option value=0
+              | PAY PER SCAN
+            option value=1
+              | PAY PER MONTH
 
-              .column
-                .box
-                  h5
-                    = input class="form-control" type="radio" name="scan" value="month"
-                    | &nbsp; PAY PER MONTH
-          .columns
-            .column.is-half
-              .box
-                | Scans Left
-                br
-                = input type=number
-            .column.is-half
-              .box
-                | Expiry Date
-                = date-picker date=mydate valueFormat='YYYY-MM-DD'
+      .columns class=showScansLeft:show:hide
+        .column
+            | Scans Left
+            br
+            = input type=number
+      .columns class=showExpiryDate:show:hide
+        .column
+            | Expiry Date
+            br
+            = date-picker date=mydate valueFormat='YYYY-MM-DD'
 
       .columns
         .column
