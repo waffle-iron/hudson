@@ -6,6 +6,7 @@ Pricing = DS.Model.extend
   price: DS.attr 'number'
   projectsLimit: DS.attr "number"
   invoices: DS.hasMany 'invoice', inverse:'pricing'
+  subscriptions: DS.hasMany 'subscription', inverse:'pricing'
 
   descriptionItems:(->
     description = @get "description"

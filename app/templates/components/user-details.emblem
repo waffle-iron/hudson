@@ -88,61 +88,92 @@
             button click="addNamespaces"
               | ADD NAMESPACES
   else
-    .columns.add-subscription
-      .column.box.margin-top10.is-one-third class=addSubscription:show:hide click="openSubscriptionForm"
-        div
-          = fa-icon "tags"
-        div
-          | ADD SUBSCRIPTION
+    if hasSubscription
+      .columns
+        .column.is-one-third
+          table
+            tr
+              td
+                | PRICING
+              td
+                = user.subscription.pricing.name
+            tr
+              td
+                | COUPON
+              td
+                = user.invoice.coupon.code
+            tr
+              td
+                | SOURCE
+              td
+                = user.invoice.sourceType
+            tr
+              td
+                | PAYMENT TYPE
+              td
+                = user.subscription.duration
+            tr
+              td
+                | SCANS LEFT
+              td
+                = user.subscription.scansLeft
 
-    .columns
-      .column.is-half class=subscriptionForm:show:hide
-        .columns
-          .column
-            .box
-              | Pricing
-              span
+    else
+      .columns.add-subscription
+        .column.box.margin-top10.is-one-third class=addSubscription:show:hide click="openSubscriptionForm"
+          div
+            = fa-icon "tags"
+          div
+            | ADD SUBSCRIPTION
+
+      .columns
+        .column.is-half class=subscriptionForm:show:hide
+          .columns
+            .column
+              .box
+                | Pricing
+                span
+                  select.input
+                    each pricings as |pricing|
+                      option value=pricing.name
+                        = pricing.name
+            .column
+              .box
+                | Coupon
                 select.input
-                  each pricings as |pricing|
+                  each coupons as |coupon|
+                    option value=coupon.code
+                      = coupon.code
+          .columns
+            .column
+              .box
+                | Source
+                select.input
+                  each sources as |source|
                     option value=pricing.name
                       = pricing.name
-          .column
-            .box
-              | Coupon
-              select.input
-                each coupons as |coupon|
-                  option value=coupon.code
-                    = coupon.code
-        .columns
-          .column
-            .box
-              | Source
-              select.input
-                each sources as |source|
-                  option value=pricing.name
-                    = pricing.name
-        .columns
-          .column.is-half
-            select.input{action 'selectPlan' on='change'} id="select-plan-type"
-              option value=0
-                | PAY PER SCAN
-              option value=1
-                | PAY PER MONTH
+          .columns
+            .column.is-half
+              select.input{action 'selectPlan' on='change'} id="select-plan-type"
+                option value=0
+                  | PAY PER SCAN
+                option value=1
+                  | PAY PER MONTH
 
-        .columns class=showScansLeft:show:hide
-          .column
-              | Scans Left
-              br
-              = input type=number
-        .columns class=showExpiryDate:show:hide
-          .column
-              | Expiry Date
-              br
-              = date-picker date=mydate valueFormat='YYYY-MM-DD'
+          .columns class=showScansLeft:show:hide
+            .column
+                | Scans Left
+                br
+                = input type=number
+          .columns class=showExpiryDate:show:hide
+            .column
+                | Expiry Date
+                br
+                = date-picker date=mydate valueFormat='YYYY-MM-DD'
 
-        .columns
-          .column
-            button.is-primary click="closeSubscriptionForm"
-              | cancel
-            button.is-primary.margin-left
-              | update
+          .columns
+            .column
+              button.is-primary click="closeSubscriptionForm"
+                | cancel
+              button.is-primary.margin-left
+                | update
