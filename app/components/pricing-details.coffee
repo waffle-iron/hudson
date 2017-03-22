@@ -3,7 +3,7 @@
 PricingDetailsComponent = Ember.Component.extend
 
   pricing: (->
-    @get('store').createRecord('pricing/:id')
+    @get('store').createRecord('pricing')
   ).property()
 
   showHide: true

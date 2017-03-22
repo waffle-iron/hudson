@@ -3,7 +3,7 @@
 CouponDetailsComponent = Ember.Component.extend
 
   coupon: (->
-    @get('store').createRecord('coupon/:id')
+    @get('store').createRecord('coupon')
   ).property()
 
   showHide: true
