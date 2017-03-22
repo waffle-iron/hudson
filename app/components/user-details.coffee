@@ -7,7 +7,8 @@ UserDetailsComponent = Ember.Component.extend
     @get('store').createRecord('user')
   ).property()
 
-  hasSubscription: false
+  hasSubscription: true
+
 
   isOverview: true
   isNamespace: false
@@ -41,6 +42,11 @@ UserDetailsComponent = Ember.Component.extend
   sources: (->
     store = @get "store"
     store.findAll "invoice"
+  ).property()
+
+  subscriptions: (->
+    store = @get "store"
+    store.findAll "subscription"
   ).property()
 
   overviewClass: Ember.computed "isOverview", ->
@@ -117,6 +123,19 @@ UserDetailsComponent = Ember.Component.extend
       else
         @set "showScansLeft", false
         @set "showExpiryDate", true
+
+    addNamespaces: ->
+      that = @
+      user = @get 'user'
+      user.save()
+      .then (data) ->
+        that.set "showHide", true
+        that.set "editUnedit", false
+        that.get("notify").success "namespace added!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+
 
 
 `export default UserDetailsComponent`
