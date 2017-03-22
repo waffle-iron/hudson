@@ -10,6 +10,11 @@ Subscription = DS.Model.extend
   pricing : DS.belongsTo 'pricing', inverse: 'subscriptions'
 
 
+  perScanSubscription: (->
+    limitedScans = @get "limitedScans"
+    limitedScans
+  ).property "limitedScans"
+
   humanizedExpiryDate: (->
     expiryDate = @get "expiryDate"
     expiryDate.toLocaleDateString()

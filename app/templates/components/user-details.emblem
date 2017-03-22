@@ -96,27 +96,91 @@
               td
                 | PRICING
               td
-                = user.subscription.pricing.name
+                p class=showSubscription:show:hide
+                  = user.subscription.pricing.name
+                p class=editSubscription:edit:un-edit
+                  select.input
+                    each pricings as |pricing|
+                      option value=0
+                        = pricing.name
             tr
               td
                 | COUPON
               td
-                = user.invoice.coupon.code
+                p class=showSubscription:show:hide
+                  = user.invoice.coupon.code
+                p class=editSubscription:edit:un-edit
+                  select.input
+                    each coupons as |coupon|
+                      option value=coupon.code
+                        = coupon.code
             tr
               td
                 | SOURCE
               td
-                = user.invoice.sourceType
-            tr
-              td
-                | PAYMENT TYPE
-              td
-                = user.subscription.duration
-            tr
-              td
-                | SCANS LEFT
-              td
-                = user.subscription.scansLeft
+                p class=showSubscription:show:hide
+                  = user.invoice.sourceType
+                p class=editSubscription:edit:un-edit
+                  select.input
+                    each sources as |source|
+                      option value=source.source
+                        = source.sourceType
+
+            if user.subscription.perScanSubscription
+              tr
+                  td
+                    | PAYMENT TYPE
+                  td
+                    p class=showSubscription:show:hide
+                      | Pay Per Scan
+                    p class=editSubscription:edit:un-edit
+                      select.input
+                        option value=0
+                          | Pay Per Scan
+                        each subscriptions as |subscription|
+                          option value=subscription.duration
+                            = subscription.duration
+              tr
+                td
+                  | SCANS LEFT
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.scansLeft
+                  p class=editSubscription:edit:un-edit
+                    = input type=text placeholder=user.subscription.scansLeft value=user.subscription.scansLeft
+            else
+              tr
+                  td
+                    | PAYMENT DURATION
+                  td
+                    p class=showSubscription:show:hide
+                      | Pay Per Scan
+                    p class=editSubscription:edit:un-edit
+                      select.input
+                        option value=0
+                          | Pay Per Scan
+                        each subscriptions as |subscription|
+                          option value=subscription.duration
+                            = subscription.duration
+              tr
+                td
+                  | EXPIRY DATE
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.humanizedExpiryDate
+                  p class=editSubscription:edit:un-edit
+                    = date-picker date=mydate valueFormat='YYYY-MM-DD'
+
+      .columns
+        .column
+          button.is-primary class=showSubscription:show:hide click="editSubscription"
+              | EDIT SUBSCRIPTION
+
+          button.is-primary class=editSubscription:edit:un-edit click="saveSubscription"
+              | SAVE SUBSCRIPTION
+
+          button.is-primary.margin-left class=editSubscription:edit:un-edit click="cancelSubscription"
+              | CANCEL
 
     else
       .columns.add-subscription
@@ -150,8 +214,8 @@
                 | Source
                 select.input
                   each sources as |source|
-                    option value=pricing.name
-                      = pricing.name
+                    option value=source.source
+                      = source.sourceType
           .columns
             .column.is-half
               select.input{action 'selectPlan' on='change'} id="select-plan-type"
