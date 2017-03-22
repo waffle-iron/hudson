@@ -7,6 +7,8 @@ UserDetailsComponent = Ember.Component.extend
     @get('store').createRecord('user')
   ).property()
 
+  hasSubscription: false
+
   isOverview: true
   isNamespace: false
   isSubscription: false
@@ -20,8 +22,26 @@ UserDetailsComponent = Ember.Component.extend
   showHide: true
   editUnedit: false
 
+  showSubscription: true
+  editSubscription: false
+
   showScansLeft: true
   showExpiryDate: false
+
+  pricings: (->
+    store = @get "store"
+    store.findAll "pricing"
+  ).property()
+
+  coupons: (->
+    store = @get "store"
+    store.findAll "coupon"
+  ).property()
+
+  sources: (->
+    store = @get "store"
+    store.findAll "invoice"
+  ).property()
 
   overviewClass: Ember.computed "isOverview", ->
     if @get "isOverview"
@@ -61,9 +81,17 @@ UserDetailsComponent = Ember.Component.extend
       @set "showHide", false
       @set "editUnedit", true
 
+    editSubscription: ->
+      @set "showSubscription", false
+      @set "editSubscription", true
+
     cancelForm: ->
       @set "showHide", true
       @set "editUnedit", false
+
+    cancelSubscription: ->
+      @set "showSubscription", true
+      @set "editSubscription", false
 
     saveText: ->
       that = @
@@ -76,6 +104,10 @@ UserDetailsComponent = Ember.Component.extend
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
+
+    saveSubscription: ->
+      @set "showSubscription", true
+      @set "editSubscription", false
 
     selectPlan: ->
       planType = parseInt @$('#select-plan-type').val()
