@@ -40,9 +40,7 @@ module.exports = function(environment) {
       routeIfAlreadyAuthenticated: 'authenticated.index'
     },
     endpoints: {
-      addUser: 'add_user',
-      addPricing: 'add_pricing',
-      addCoupon: 'add_coupon',
+      changePassword: 'change_password',
       deleteUser: 'delete_user',
       deletePricing: 'delete_pricing',
       deleteCoupon: 'delete_coupon'

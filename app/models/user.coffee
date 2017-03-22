@@ -11,10 +11,17 @@ User = DS.Model.extend
   projectCount: DS.attr 'number'
   dateJoined: DS.attr 'date'
   isActive: DS.attr 'boolean'
+  anyNamespace: DS.attr 'boolean'
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
   files: DS.hasMany 'file', inverse:'user'
   subscriptions: DS.hasMany 'subscription', inverse:'user'
+
+  isAnyNamespace: (->
+    anyNamespace= @get "anyNamespace"
+    if anyNamespace is true
+      "checked"
+  ).property "anyNamespace"
 
   fullName: (->
     firstName = @get "firstName"

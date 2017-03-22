@@ -14,8 +14,6 @@
         th
           | EMAIL
         th
-          | PASSWORD
-        th
           | STATUS
         th
           | EDIT
@@ -36,11 +34,6 @@
           p class=editUnedit:edit:un-edit
             = input class="input" type="email" placeholder=user.email value=user.email
         td
-          p class=showHide:show:hide
-            = user.password
-          p class=editUnedit:edit:un-edit
-            = input class="input" type="password" placeholder=user.password value=user.password
-        td
           = user.userStatus
         td
           p class=showHide:show:hide click="editText"
@@ -51,6 +44,20 @@
 
           p.margin-left class=editUnedit:edit:un-edit click="cancelForm"
             = fa-icon "times"
+
+  .columns.margin-top10
+    .column.box.is-one-third
+      form
+        .control
+          label for="newPassword"
+            = input class="input" type="password" value=newPassword
+          br.margin-top10  
+          label for="newPassword"
+            = input class="input" type="password" value=confirmPassword
+          button.is-primary.margin-top10 click="changePassword"
+            | Change password
+
+
   .columns
     .column
       .tabs.is-boxed
@@ -81,7 +88,7 @@
         div
           form.namespace-form
             p.control
-              = input class="form-control" type="checkbox"
+              = input class="form-control" type="checkbox" checked=user.isAnyNamespace
               | &nbsp; Any Namespace
             p.control.is-fullwidth
               = textarea class="form-control input" placeholder=user.namespaces type="text" value=user.namespaces

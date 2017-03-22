@@ -1,7 +1,12 @@
 `import Ember from 'ember'`
 `import ENUMS from 'hudson/enums'`
+`import ENV from 'hudson/config/environment'`
 
 UserDetailsComponent = Ember.Component.extend
+
+  newPassword: ""
+  confirmPassword: ""
+
 
   user: (->
     @get('store').createRecord('user')
@@ -124,6 +129,25 @@ UserDetailsComponent = Ember.Component.extend
         @set "showScansLeft", false
         @set "showExpiryDate", true
 
+    changePassword: ->
+      newPassword = @get "newPassword"
+      confirmPassword = @get "confirmPassword"
+
+      if newPassword isnt confirmPassword
+        return @get("notify").error "Password doesn't match"
+
+      userId = @get "user.id"
+      changePassword = [ENV.endpoints.changePassword, userId].join '/'
+      data =
+        password: newPassword
+      that = @
+      @get("ajax").post changePassword, data: data
+      .then (data) ->
+        that.get("notify").success "Password Changed"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+
     addNamespaces: ->
       that = @
       user = @get 'user'
@@ -131,7 +155,7 @@ UserDetailsComponent = Ember.Component.extend
       .then (data) ->
         that.set "showHide", true
         that.set "editUnedit", false
-        that.get("notify").success "namespace added!"
+        that.get("notify").success "Namespace added!"
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message

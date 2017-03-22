@@ -13,5 +13,6 @@ export default Factory.extend({
   namespaces: faker.internet.domainName,
   projectCount: faker.random.number,
   dateJoined: faker.date.past,
-  isActive: faker.random.boolean
+  isActive: faker.random.boolean,
+  anyNamespace: faker.random.boolean
 });
