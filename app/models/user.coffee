@@ -23,9 +23,9 @@ User = DS.Model.extend
   ).property "anyNamespace"
 
   hasSubscription: (->
-    subscription = @get "subscription"
-    !Ember.isEmpty subscription
-  ).property "subscription"
+    subscriptionId = @get "subscription.id"
+    !Ember.isEmpty subscriptionId
+  ).property "subscription.id"
 
   fullName: (->
     firstName = @get "firstName"

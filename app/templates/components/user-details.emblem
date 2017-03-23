@@ -95,7 +95,7 @@
             button click="addNamespaces"
               | ADD NAMESPACES
   else
-    if hasSubscription
+    if user.hasSubscription
       .columns
         .column.is-one-third
           table
