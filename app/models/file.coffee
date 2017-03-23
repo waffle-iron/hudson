@@ -6,7 +6,6 @@ File = DS.Model.extend BaseModelMixin,
   uuid: DS.attr 'string'
   name: DS.attr 'string'
   dynamicStatus: DS.attr 'number'
-  user: DS.belongsTo 'user', inverse:'files'
 
   statusText: (->
     switch @get "dynamicStatus"
