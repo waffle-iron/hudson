@@ -15,7 +15,7 @@ User = DS.Model.extend
   invoices: DS.hasMany 'invoice', inverse:'user'
   collaborations: DS.hasMany 'collaboration', inverse:'user'
   files: DS.hasMany 'file', inverse:'user'
-  subscriptions: DS.hasMany 'subscription', inverse:'user'
+  subscription: DS.belongsTo 'subscription', inverse:'user'
 
   isAnyNamespace: (->
     anyNamespace= @get "anyNamespace"

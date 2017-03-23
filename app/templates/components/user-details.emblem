@@ -51,7 +51,7 @@
         .control
           label for="newPassword"
             = input class="input" type="password" value=newPassword
-          br.margin-top10  
+          br.margin-top10
           label for="newPassword"
             = input class="input" type="password" value=confirmPassword
           button.is-primary.margin-top10 click="changePassword"
@@ -221,8 +221,8 @@
                 | Source
                 select.input
                   each sources as |source|
-                    option value=source.source
-                      = source.sourceType
+                    option value=source.key
+                      = source.value
           .columns
             .column.is-half
               select.input{action 'selectPlan' on='change'} id="select-plan-type"
@@ -246,5 +246,5 @@
             .column
               button.is-primary click="closeSubscriptionForm"
                 | cancel
-              button.is-primary.margin-left
+              button.is-primary.margin-left click="addNewSubscription"
                 | update

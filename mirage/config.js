@@ -28,18 +28,7 @@ export default function() {
    this.post('/users', () => {
     return;
    });
-
-   this.post('/add_user', () => {
-    return;
-   });
-
-   this.post('/add_pricing', () => {
-    return;
-   });
-
-   this.post('/add_coupon', () => {
-    return;
-   });
+   this.post('/subscriptions', 'subscription');
 
    this.delete('/delete_user', () => {
     return;

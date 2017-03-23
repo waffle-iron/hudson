@@ -6,9 +6,8 @@ Subscription = DS.Model.extend
   scansLeft: DS.attr 'number'
   expiryDate: DS.attr 'date'
   limitedScans: DS.attr 'boolean'
-  user : DS.belongsTo 'user', inverse: 'subscriptions'
+  user : DS.belongsTo 'user', inverse: 'subscription'
   pricing : DS.belongsTo 'pricing', inverse: 'subscriptions'
-
 
   perScanSubscription: (->
     limitedScans = @get "limitedScans"

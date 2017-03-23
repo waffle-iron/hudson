@@ -7,12 +7,17 @@ UserDetailsComponent = Ember.Component.extend
   newPassword: ""
   confirmPassword: ""
 
+  sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
 
   user: (->
     @get('store').createRecord('user')
   ).property()
 
-  hasSubscription: true
+  subscription: (->
+    @get('store').createRecord('subscription')
+  ).property()
+
+  hasSubscription: false
 
 
   isOverview: true
@@ -42,11 +47,6 @@ UserDetailsComponent = Ember.Component.extend
   coupons: (->
     store = @get "store"
     store.findAll "coupon"
-  ).property()
-
-  sources: (->
-    store = @get "store"
-    store.findAll "invoice"
   ).property()
 
   subscriptions: (->
@@ -160,6 +160,16 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-
+    addNewSubscription: ->
+      that = @
+      subscription = @get 'subscription'
+      subscription.save()
+      .then (data) ->
+        that.set "showHide", true
+        that.set "editUnedit", false
+        that.get("notify").success "Subscription added!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
 
 `export default UserDetailsComponent`
