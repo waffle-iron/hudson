@@ -16,7 +16,7 @@ Subscription = DS.Model.extend
 
   humanizedExpiryDate: (->
     expiryDate = @get "expiryDate"
-    expiryDate.toLocaleDateString()
+    expiryDate?.toLocaleDateString()
   ).property "expiryDate"
 
 `export default Subscription`
