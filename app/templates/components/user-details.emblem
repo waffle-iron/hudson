@@ -235,12 +235,12 @@
             .column
                 | Scans Left
                 br
-                = input type=number
+                = input type=number value=subscription.scansLeft
           .columns class=showExpiryDate:show:hide
             .column
                 | Expiry Date
                 br
-                = date-picker date=mydate valueFormat='YYYY-MM-DD'
+                = date-picker date=mydate valueFormat='YYYY-MM-DD' value=subscription.expiryDate
 
           .columns
             .column
