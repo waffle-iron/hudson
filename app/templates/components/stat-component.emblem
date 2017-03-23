@@ -1,0 +1,45 @@
+.main-container
+  .columns.link-to
+    = link-to "authenticated.users" class="column card"
+      = fa-icon "user"
+      div
+        | Users
+      div
+        | 140
+    = link-to "authenticated.pricings" class="column card"
+      = fa-icon "usd"
+      div
+        | Pricings
+      div
+        | 20
+    = link-to "authenticated.files" class="column card"
+      = fa-icon "tasks"
+      div
+        | Files
+      div
+        | 350
+  .columns.activity-container-header
+    .column.card.margin-left
+      div
+        | RECENT ACTIVITIES
+  .columns.activity-container
+    .column.card.margin-left
+      = fa-icon "usd"
+      div
+        | A new pricing Essentails has been added by Sugat
+      div
+        | 34 MINUTES AGO
+  .columns.activity-container
+    .column.card.margin-left
+      = fa-icon "user"
+      div
+        | A new user Harshit has been added by Subho
+      div
+        | 2 DAYS AGO
+  .columns.activity-container
+    .column.card.margin-left
+        = fa-icon "tasks"
+        div
+          | A new project Razorpay has been added by Shashank
+        div
+          | 1 WEEK AGO
