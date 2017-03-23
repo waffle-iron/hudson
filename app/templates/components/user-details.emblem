@@ -106,9 +106,9 @@
                 p class=showSubscription:show:hide
                   = user.subscription.pricing.name
                 p class=editSubscription:edit:un-edit
-                  select.input
+                  select.input{action 'updateSubscription' on='change'} id="select-pricing"
                     each pricings as |pricing|
-                      option value=0
+                      option value=pricing.name
                         = pricing.name
             tr
               td
@@ -117,10 +117,10 @@
                 p class=showSubscription:show:hide
                   = user.subscription.source
                 p class=editSubscription:edit:un-edit
-                  select.input
+                  select.input{action 'updateSubscription' on='change'} id="select-source"
                     each sources as |source|
-                      option value=source.source
-                        = source.sourceType
+                      option value=source.value
+                        = source.value
 
             if user.subscription.perScanSubscription
               tr
@@ -152,7 +152,7 @@
                     p class=showSubscription:show:hide
                       | Pay Per Month
                     p class=editSubscription:edit:un-edit
-                      select.input
+                      select.input{action 'updateSubscription' on='change'} id="select-duration"
                         option value=0
                           | Pay Per Scan
                         each subscriptions as |subscription|

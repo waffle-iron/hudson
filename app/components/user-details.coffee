@@ -104,6 +104,17 @@ UserDetailsComponent = Ember.Component.extend
       @set "showSubscription", true
       @set "editSubscription", false
 
+    updateSubscription: ->
+      pricing = @$('#select-pricing').val()
+      duration = @$('#select-duration').val()
+      source = @$('#select-source').val()
+      subscription = @get "subscription"
+
+      subscription.set "pricing", pricing
+      subscription.set "duration", duration
+      subscription.set "source", source
+
+
     saveText: ->
       that = @
       user = @get 'user'
@@ -144,6 +155,18 @@ UserDetailsComponent = Ember.Component.extend
       @get("ajax").post changePassword, data: data
       .then (data) ->
         that.get("notify").success "Password Changed"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+
+    saveSubscription: ->
+      that = @
+      subscription = @get 'subscription'
+      subscription.save()
+      .then (data) ->
+        that.set "showHide", true
+        that.set "editUnedit", false
+        that.get("notify").success "Subscription updated!"
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
