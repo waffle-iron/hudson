@@ -1,11 +1,11 @@
 .left-nav
   .columns.top-nav
     .column.logo
-      img src="images/logo.png"
+      img src="/images/logo.png"
     .column.content-right.account-section
       = fa-icon "user"
       h3
-        | Yashwin Poojary
+        = model.username
       button.button.is-primary click="invalidateSession"
         | logout
 

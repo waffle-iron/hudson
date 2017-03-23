@@ -18,6 +18,10 @@ AuthenticatedRoute = Ember.Route.extend AuthenticatedRouteMixin,
   afterModel: ->
     @get('notify').setDefaultAutoClear ENV.notifications.autoClear
 
+  model: ->
+    userId = @get "session.data.authenticated.user_id"
+    @get('store').find('user', userId)
+
   actions:
     invalidateSession: ->
       @get('session').invalidate()
