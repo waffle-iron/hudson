@@ -112,21 +112,10 @@
                         = pricing.name
             tr
               td
-                | COUPON
-              td
-                p class=showSubscription:show:hide
-                  = user.invoice.coupon.code
-                p class=editSubscription:edit:un-edit
-                  select.input
-                    each coupons as |coupon|
-                      option value=coupon.code
-                        = coupon.code
-            tr
-              td
                 | SOURCE
               td
                 p class=showSubscription:show:hide
-                  = user.invoice.sourceType
+                  = user.subscription.source
                 p class=editSubscription:edit:un-edit
                   select.input
                     each sources as |source|
@@ -161,7 +150,7 @@
                     | PAYMENT DURATION
                   td
                     p class=showSubscription:show:hide
-                      | Pay Per Scan
+                      | Pay Per Month
                     p class=editSubscription:edit:un-edit
                       select.input
                         option value=0
@@ -208,13 +197,6 @@
                     each pricings as |pricing|
                       option value=pricing.name
                         = pricing.name
-            .column
-              .box
-                | Coupon
-                select.input
-                  each coupons as |coupon|
-                    option value=coupon.code
-                      = coupon.code
           .columns
             .column
               .box

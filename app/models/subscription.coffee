@@ -6,6 +6,7 @@ Subscription = DS.Model.extend
   scansLeft: DS.attr 'number'
   expiryDate: DS.attr 'date'
   limitedScans: DS.attr 'boolean'
+  source: DS.attr 'number'
   user : DS.belongsTo 'user', inverse: 'subscription'
   pricing : DS.belongsTo 'pricing', inverse: 'subscriptions'
 
