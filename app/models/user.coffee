@@ -22,6 +22,11 @@ User = DS.Model.extend
       "checked"
   ).property "anyNamespace"
 
+  hasSubscription: (->
+    subscription = @get "subscription"
+    !Ember.isEmpty subscription
+  ).property "subscription"
+
   fullName: (->
     firstName = @get "firstName"
     lastName = @get "lastName"
