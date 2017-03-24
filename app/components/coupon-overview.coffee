@@ -8,12 +8,13 @@ CouponOverviewComponent = Ember.Component.extend
 
   actions:
     deleteCoupon: ->
-      coupon = @get "coupon.code"
-      return if !confirm "Do you want to delete the coupon " + coupon + "?"
+      coupon = @get 'coupon'
+      couponCode = @get "coupon.code"
+      return if !confirm "Do you want to delete the coupon " + couponCode + "?"
       that = @
-      @get("ajax").delete ENV.endpoints.deleteCoupon
+      coupon.destroyRecord()
       .then (data) ->
-        that.get("notify").success "Coupon " + coupon + " has been deleted"
+        that.get("notify").success "Coupon " + couponCode + " has been deleted"
         setTimeout ->
           window.location.reload() # FIXME: Hackish way
         ,

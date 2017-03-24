@@ -22,4 +22,5 @@ PricingOverviewComponent = Ember.Component.extend
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
+
 `export default PricingOverviewComponent`
