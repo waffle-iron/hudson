@@ -3,17 +3,21 @@
 
 UserOverviewComponent = Ember.Component.extend
 
+  user: (->
+    @get('store').createRecord('user')
+  ).property()
+
   tagName: ['tr']
   classNames: ['table-content']
 
   actions:
     deleteUser: ->
-      fullName = @get "user.fullName"
-      return if !confirm "Do you want to delete the user " + fullName + "?"
+      return if !confirm "Do you want to delete the user?"
       that = @
-      @get("ajax").delete ENV.endpoints.deleteUser
+      user = @get 'user'
+      user.destroyRecord()
       .then (data) ->
-        that.get("notify").success "User " + fullName + " has been deleted"
+        that.get("notify").success "User has been deleted"
         setTimeout ->
           window.location.reload() # FIXME: Hackish Way
         ,

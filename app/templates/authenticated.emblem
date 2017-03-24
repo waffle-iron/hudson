@@ -24,7 +24,7 @@
               | Pricings
           li
             = link-to 'authenticated.files'
-              | Scans
+              | Files
           li
             = link-to 'authenticated.coupons'
               | Coupons

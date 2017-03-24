@@ -29,16 +29,4 @@ export default function() {
     return;
    });
    this.post('/subscriptions', 'subscription');
-
-   this.delete('/delete_user', () => {
-    return;
-   });
-
-   this.delete('/delete_pricing', () => {
-    return;
-   });
-
-   this.delete('/delete_coupon', () => {
-    return;
-   });
 }

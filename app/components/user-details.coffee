@@ -17,9 +17,6 @@ UserDetailsComponent = Ember.Component.extend
     @get('store').createRecord('subscription')
   ).property()
 
-  hasSubscription: false
-
-
   isOverview: true
   isNamespace: false
   isSubscription: false
