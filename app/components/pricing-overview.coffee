@@ -8,10 +8,11 @@ PricingOverviewComponent = Ember.Component.extend
 
   actions:
     deletePricing: ->
+      pricing = @get 'pricing'
       pricingName = @get "pricing.name"
       return if !confirm "Do you want to delete the pricing " + pricingName + "?"
       that = @
-      @get("ajax").delete ENV.endpoints.deletePricing
+      pricing.destroyRecord()
       .then (data) ->
         that.get("notify").success "Pricing " + pricingName + " has been deleted"
         setTimeout ->
