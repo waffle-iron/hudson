@@ -108,7 +108,7 @@
                 p class=editSubscription:edit:un-edit
                   select.input{action 'updateSubscription' on='change'} id="select-pricing"
                     each pricings as |pricing|
-                      option value=pricing.name
+                      option value=pricing.id
                         = pricing.name
             tr
               td
@@ -130,7 +130,7 @@
                     p class=showSubscription:show:hide
                       | Pay Per Scan
                     p class=editSubscription:edit:un-edit
-                      select.input
+                      select.input{action 'updateSubscription' on='change'} id="select-duration"
                         option value=0
                           | Pay Per Scan
                         each subscriptions as |subscription|
@@ -207,7 +207,7 @@
                       = source.value
           .columns
             .column.is-half
-              select.input{action 'selectPlan' on='change'} id="select-plan-type"
+              select.input
                 option value=0
                   | PAY PER SCAN
                 option value=1

@@ -101,15 +101,7 @@ UserDetailsComponent = Ember.Component.extend
       @set "showSubscription", true
       @set "editSubscription", false
 
-    updateSubscription: ->
-      pricing = @$('#select-pricing').val()
-      duration = @$('#select-duration').val()
-      source = @$('#select-source').val()
-      subscription = @get "subscription"
 
-      subscription.set "pricing", pricing
-      subscription.set "duration", duration
-      subscription.set "source", source
 
 
     saveText: ->
@@ -156,17 +148,7 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-    saveSubscription: ->
-      that = @
-      subscription = @get 'subscription'
-      subscription.save()
-      .then (data) ->
-        that.set "showHide", true
-        that.set "editUnedit", false
-        that.get("notify").success "Subscription updated!"
-      .catch (error) ->
-        for error in error.errors
-          that.get("notify").error error.detail?.message
+
 
     addNamespaces: ->
       that = @
@@ -179,6 +161,29 @@ UserDetailsComponent = Ember.Component.extend
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
+
+    updateSubscription: ->
+      pricingId = parseInt @$('#select-pricing').val()
+      pricing = @get('store').find('pricing', pricingId)
+      duration = @$('#select-duration').val()
+      source = @$('#select-source').val()
+      subscription = @get "subscription"
+
+      subscription.set "pricing", pricing
+      subscription.set "duration", duration
+      subscription.set "source", source
+
+    saveSubscription: ->
+      that = @
+      subscription = @get 'subscription'
+      subscription.save()
+      .then (data) ->
+        that.set "showHide", true
+        that.set "editUnedit", false
+        that.get("notify").success "Subscription updated!"
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message      
 
     addNewSubscription: ->
       that = @
