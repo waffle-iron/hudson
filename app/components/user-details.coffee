@@ -206,12 +206,16 @@ UserDetailsComponent = Ember.Component.extend
       data =
         "data":
           "attributes":
-            "pricing-id": selectedPricing
             "duration": selectedDuration
             "source": selectedSource
             "scans-left": totalScansLeft
             "expiry-date": selectedExpiryDate
             "limited-scans": limitedScans
+          "relationships":
+            "pricing":
+              "data": selectedPricing
+          "type": "subscriptions"
+
       @get("ajax").patch subscription, data: JSON.stringify data
       .then (data) ->
         that.set "showSubscription", true
