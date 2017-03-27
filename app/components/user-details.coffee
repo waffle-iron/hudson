@@ -190,7 +190,7 @@ UserDetailsComponent = Ember.Component.extend
         @set "limitedScans", false
         @set "totalScansLeft", 0
 
-      addedDuration = @get "addedDuration"  
+      addedDuration = @get "addedDuration"
 
       if addedDuration is ENUMS.PLAN_TYPE.PER_SCAN
         @set "limitedScans", true
@@ -211,9 +211,10 @@ UserDetailsComponent = Ember.Component.extend
       selectedSource = @get "selectedSource"
       totalScansLeft = @get "totalScansLeft"
       selectedExpiryDate = @get "selectedExpiryDate"
-      limitedScans = @get "limitedScans"
-      if Ember.isEmpty limitedScans
-        limitedScans = @get "user.subscription.limitedScans"
+      if selectedDuration is ENUMS.PLAN_TYPE.PER_SCAN
+          limitedScans = true
+      else
+          limitedScans = false
       subscriptionId = @get "user.subscription.id"
       subscription = [ENV.endpoints.subscription, subscriptionId].join '/'
       that = @
@@ -247,15 +248,18 @@ UserDetailsComponent = Ember.Component.extend
 
     addNewSubscription: ->
 
-      userId = @get "user.id"
-
-      addedPricing = @get "addedPricing"
-      limitedScans = @get "limitedScans"
       addedDuration = @get "addedDuration"
-      addedSource = 1
+      addedPricing = @get "addedPricing"
+      addedSource = @get "addedSource"
       totalScansLeft = @get "totalScansLeft"
       selectedExpiryDate = @get "selectedExpiryDate"
 
+      if addedDuration is ENUMS.PLAN_TYPE.PER_SCAN
+          limitedScans = true
+      else
+          limitedScans = false
+
+      userId = @get "user.id"
       that = @
       data =
         "data":
