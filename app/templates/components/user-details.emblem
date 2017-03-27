@@ -136,29 +136,17 @@
                         each subscriptions as |subscription|
                           option value=subscription.duration
                             = subscription.duration
-              tr
+
+              tr class=hasScansLeft:showblock:hide
                 td
                   | SCANS LEFT
                 td
                   p class=showSubscription:show:hide
                     = user.subscription.scansLeft
                   p class=editSubscription:edit:un-edit
-                    = input type=text placeholder=user.subscription.scansLeft value=user.subscription.scansLeft
-            else
-              tr
-                  td
-                    | PAYMENT DURATION
-                  td
-                    p class=showSubscription:show:hide
-                      | Pay Per Month
-                    p class=editSubscription:edit:un-edit
-                      select.input{action 'updateSubscription' on='change'} id="select-duration"
-                        option value=0
-                          | Pay Per Scan
-                        each subscriptions as |subscription|
-                          option value=subscription.duration
-                            = subscription.duration
-              tr
+                    = input type=text value=totalScansLeft
+
+              tr class=expiryDateSelected:showblock:hide
                 td
                   | EXPIRY DATE
                 td
@@ -166,6 +154,35 @@
                     = user.subscription.humanizedExpiryDate
                   p class=editSubscription:edit:un-edit
                     = date-picker date=mydate valueFormat='YYYY-MM-DD'
+
+            else
+              tr
+                td
+                  | PAYMENT DURATION
+                td
+                  p class=showSubscription:show:hide
+                    | Pay Per Month
+                  p class=editSubscription:edit:un-edit
+                    select.input{action 'updateSubscription' on='change'} id="select-duration"
+                      option value=1
+                        | Pay Per Month
+                      option value=0
+                        | Pay Per Scan
+
+              tr class=hasExpiryDate:showblock:hide
+                td
+                  | EXPIRY DATE
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.humanizedExpiryDate
+                  p class=editSubscription:edit:un-edit
+                    = date-picker date=mydate valueFormat='YYYY-MM-DD'
+
+              tr class=scansLeftSelected:showblock:hide
+                td
+                  | SCANS LEFT
+                td
+                  = input type=text value=totalScansLeft
 
       .columns
         .column
@@ -203,11 +220,11 @@
                 | Source
                 select.input
                   each sources as |source|
-                    option value=source.key
+                    option value=source.value
                       = source.value
           .columns
             .column.is-half
-              select.input
+              select.input{action 'selectPlan' on='change'} id="select-plan-type"
                 option value=0
                   | PAY PER SCAN
                 option value=1

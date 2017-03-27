@@ -6,7 +6,9 @@ UserDetailsComponent = Ember.Component.extend
 
   newPassword: ""
   confirmPassword: ""
-
+  showScansLeft: ""
+  selectedDuration: ""
+  totalScansLeft: ""
   sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
 
   user: (->
@@ -35,6 +37,14 @@ UserDetailsComponent = Ember.Component.extend
 
   showScansLeft: true
   showExpiryDate: false
+
+
+  hasScansLeft: true
+  expiryDateSelected: false
+
+  hasExpiryDate: true
+  scansLeftSelected: false
+
 
   pricings: (->
     store = @get "store"
@@ -102,8 +112,6 @@ UserDetailsComponent = Ember.Component.extend
       @set "editSubscription", false
 
 
-
-
     saveText: ->
       that = @
       user = @get 'user'
@@ -148,8 +156,6 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-
-
     addNamespaces: ->
       that = @
       user = @get 'user'
@@ -163,32 +169,59 @@ UserDetailsComponent = Ember.Component.extend
           that.get("notify").error error.detail?.message
 
     updateSubscription: ->
-      pricingId = parseInt @$('#select-pricing').val()
-      pricing = @get('store').find('pricing', pricingId)
-      duration = @$('#select-duration').val()
-      source = @$('#select-source').val()
-      subscription = @get "subscription"
+      @set "selectedPricing", parseInt @$('#select-pricing').val()
+      @set "selectedDuration", parseInt @$('#select-duration').val()
+      @set "selectedSource", parseInt @$('#select-source').val()
 
-      subscription.set "pricing", pricing
-      subscription.set "duration", duration
-      subscription.set "source", source
+      selectedDuration = @get "selectedDuration"
+
+      if selectedDuration is ENUMS.PLAN_TYPE.PER_SCAN
+        @set "hasScansLeft", true
+        @set "scansLeftSelected", true
+        @set "hasExpiryDate", false
+        @set "expiryDateSelected", false
+
+      else
+        @set "hasScansLeft", false
+        @set "scansLeftSelected", false
+        @set "hasExpiryDate", true
+        @set "expiryDateSelected", true
+
 
     saveSubscription: ->
+      selectedPricing = @get "selectedPricing"
+      selectedDuration = @get "selectedDuration"
+      selectedSource = @get "selectedSource"
+      showScansLeft = @get "showScansLeft"
+      subscriptionId = @get "user.subscription.id"
+      subscription = [ENV.endpoints.subscription, subscriptionId].join '/'
       that = @
-      subscription = @get 'subscription'
-      subscription.save()
+      data =
+        "pricing-id": selectedPricing
+        "duration": selectedDuration
+        "source": selectedSource
+        "scans-left": showScansLeft
+      @get("ajax").patch subscription, data: data
       .then (data) ->
         that.set "showHide", true
         that.set "editUnedit", false
         that.get("notify").success "Subscription updated!"
       .catch (error) ->
         for error in error.errors
-          that.get("notify").error error.detail?.message      
+          that.get("notify").error error.detail?.message
 
     addNewSubscription: ->
+      selectedPricing = @get "selectedPricing"
+      selectedDuration = @get "selectedDuration"
+      selectedSource = @get "selectedSource"
+      showScansLeft = @get "showScansLeft"
       that = @
-      subscription = @get 'subscription'
-      subscription.save()
+      data =
+        pricing: selectedPricing
+        duration: selectedDuration
+        source: selectedSource
+        scansLeft: showScansLeft
+      @get("ajax").post ENV.endpoints.subscription, data: data
       .then (data) ->
         that.set "showHide", true
         that.set "editUnedit", false
