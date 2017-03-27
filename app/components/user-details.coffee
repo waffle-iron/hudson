@@ -9,6 +9,9 @@ UserDetailsComponent = Ember.Component.extend
   selectedDuration: ""
   selectedPricing: ""
   selectedSource: ""
+  addedDuration: ""
+  addedPricing: ""
+  addedSource: ""
   totalScansLeft: ""
   limitedScans: ""
   sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
@@ -130,15 +133,6 @@ UserDetailsComponent = Ember.Component.extend
       @set "showSubscription", true
       @set "editSubscription", false
 
-    selectPlan: ->
-      planType = parseInt @$('#select-plan-type').val()
-      if planType is ENUMS.PLAN_TYPE.PER_SCAN
-        @set "showScansLeft", true
-        @set "showExpiryDate", false
-      else
-        @set "showScansLeft", false
-        @set "showExpiryDate", true
-
     changePassword: ->
       newPassword = @get "newPassword"
       confirmPassword = @get "confirmPassword"
@@ -170,10 +164,14 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-    saveSubscription: ->
+    updateSubscription: ->
       @set "selectedPricing", parseInt @$('#select-pricing').val()
       @set "selectedDuration", parseInt @$('#select-duration').val()
       @set "selectedSource", parseInt @$('#select-source').val()
+
+      @set "addedPricing", parseInt @$('#add-pricing').val()
+      @set "addedDuration", parseInt @$('#add-duration').val()
+      @set "addedSource", parseInt @$('#add-source').val()
 
       selectedDuration = @get "selectedDuration"
 
@@ -192,6 +190,22 @@ UserDetailsComponent = Ember.Component.extend
         @set "limitedScans", false
         @set "totalScansLeft", 0
 
+      addedDuration = @get "addedDuration"  
+
+      if addedDuration is ENUMS.PLAN_TYPE.PER_SCAN
+        @set "limitedScans", true
+        @set "showScansLeft", true
+        @set "showExpiryDate", false
+      else
+        @set "limitedScans", false
+        @set "totalScansLeft", 0
+        @set "showScansLeft", false
+        @set "showExpiryDate", true
+
+
+    saveSubscription: ->
+
+      userId = @get "user.id"
       selectedPricing = @get "selectedPricing"
       selectedDuration = @get "selectedDuration"
       selectedSource = @get "selectedSource"
@@ -213,7 +227,13 @@ UserDetailsComponent = Ember.Component.extend
             "limited-scans": limitedScans
           "relationships":
             "pricing":
-              "data": selectedPricing
+              "data":
+                "id": selectedPricing
+                "type": "pricing"
+            "user":
+              "data":
+                "id": userId
+                "type": "user"
           "type": "subscriptions"
 
       @get("ajax").patch subscription, data: JSON.stringify data
@@ -226,21 +246,42 @@ UserDetailsComponent = Ember.Component.extend
           that.get("notify").error error.detail?.message
 
     addNewSubscription: ->
-      selectedPricing = @get "selectedPricing"
-      selectedDuration = @get "selectedDuration"
-      selectedSource = @get "selectedSource"
-      showScansLeft = @get "showScansLeft"
+
+      userId = @get "user.id"
+
+      addedPricing = @get "addedPricing"
+      limitedScans = @get "limitedScans"
+      addedDuration = @get "addedDuration"
+      addedSource = 1
+      totalScansLeft = @get "totalScansLeft"
+      selectedExpiryDate = @get "selectedExpiryDate"
+
       that = @
       data =
-        pricing: selectedPricing
-        duration: selectedDuration
-        source: selectedSource
-        scansLeft: showScansLeft
-      @get("ajax").post ENV.endpoints.subscription, data: data
+        "data":
+          "attributes":
+            "duration": addedDuration
+            "source": addedSource
+            "scans-left": totalScansLeft
+            "expiry-date": selectedExpiryDate
+            "limited-scans": limitedScans
+          "relationships":
+            "pricing":
+              "data":
+                "id": addedPricing
+                "type": "pricing"
+            "user":
+              "data":
+                "id": userId
+                "type": "user"
+          "type": "subscriptions"
+      @get("ajax").post ENV.endpoints.subscription, data: JSON.stringify data
       .then (data) ->
-        that.set "showHide", true
-        that.set "editUnedit", false
         that.get("notify").success "Subscription added!"
+        setTimeout ->
+          window.location.reload() # FIXME: Hackish Way
+        ,
+          3 * 1000
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message

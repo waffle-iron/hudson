@@ -106,7 +106,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.pricing.name
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'saveSubscription' on='change'} id="select-pricing"
+                  select.input{action 'updateSubscription' on='change'} id="select-pricing"
                     each pricings as |pricing|
                       option value=pricing.id
                         = pricing.name
@@ -117,7 +117,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.source
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'saveSubscription' on='change'} id="select-source"
+                  select.input{action 'updateSubscription' on='change'} id="select-source"
                     each sources as |source|
                       option value=source.value
                         = source.value
@@ -130,7 +130,7 @@
                     p class=showSubscription:show:hide
                       | Pay Per Scan
                     p class=editSubscription:edit:un-edit
-                      select.input{action 'saveSubscription' on='change'} id="select-duration"
+                      select.input{action 'updateSubscription' on='change'} id="select-duration"
                         option value=0
                           | Pay Per Scan
                         option value=1
@@ -162,7 +162,7 @@
                   p class=showSubscription:show:hide
                     | Pay Per Month
                   p class=editSubscription:edit:un-edit
-                    select.input{action 'saveSubscription' on='change'} id="select-duration"
+                    select.input{action 'updateSubscription' on='change'} id="select-duration"
                       option value=1
                         | Pay Per Month
                       option value=0
@@ -209,21 +209,21 @@
               .box
                 | Pricing
                 span
-                  select.input
+                  select.input{action 'updateSubscription' on='change'} id="add-pricing"
                     each pricings as |pricing|
-                      option value=pricing.name
+                      option value=pricing.id
                         = pricing.name
           .columns
             .column
               .box
                 | Source
-                select.input
+                select.input{action 'updateSubscription' on='change'} id="add-source"
                   each sources as |source|
                     option value=source.value
                       = source.value
           .columns
             .column.is-half
-              select.input{action 'selectPlan' on='change'} id="select-plan-type"
+              select.input{action 'updateSubscription' on='change'} id="add-duration"
                 option value=0
                   | PAY PER SCAN
                 option value=1
@@ -233,12 +233,12 @@
             .column
                 | Scans Left
                 br
-                = input type=number value=subscription.scansLeft
+                = input type=number value=totalScansLeft
           .columns class=showExpiryDate:show:hide
             .column
                 | Expiry Date
                 br
-                = date-picker date=mydate valueFormat='YYYY-MM-DD' value=subscription.expiryDate
+                = date-picker date=mydate valueFormat='YYYY-MM-DD' value=selectedExpiryDate
 
           .columns
             .column
