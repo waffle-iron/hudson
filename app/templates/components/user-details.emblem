@@ -106,7 +106,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.pricing.name
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'updateSubscription' on='change'} id="select-pricing"
+                  select.input{action 'saveSubscription' on='change'} id="select-pricing"
                     each pricings as |pricing|
                       option value=pricing.id
                         = pricing.name
@@ -117,7 +117,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.source
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'updateSubscription' on='change'} id="select-source"
+                  select.input{action 'saveSubscription' on='change'} id="select-source"
                     each sources as |source|
                       option value=source.value
                         = source.value
@@ -130,12 +130,11 @@
                     p class=showSubscription:show:hide
                       | Pay Per Scan
                     p class=editSubscription:edit:un-edit
-                      select.input{action 'updateSubscription' on='change'} id="select-duration"
+                      select.input{action 'saveSubscription' on='change'} id="select-duration"
                         option value=0
                           | Pay Per Scan
-                        each subscriptions as |subscription|
-                          option value=subscription.duration
-                            = subscription.duration
+                        option value=1
+                          | Pay Per Month
 
               tr class=hasScansLeft:showblock:hide
                 td
@@ -153,7 +152,7 @@
                   p class=showSubscription:show:hide
                     = user.subscription.humanizedExpiryDate
                   p class=editSubscription:edit:un-edit
-                    = date-picker date=mydate valueFormat='YYYY-MM-DD'
+                    = date-picker date=mydate valueFormat='YYYY-MM-DD' value=selectedExpiryDate
 
             else
               tr
@@ -163,7 +162,7 @@
                   p class=showSubscription:show:hide
                     | Pay Per Month
                   p class=editSubscription:edit:un-edit
-                    select.input{action 'updateSubscription' on='change'} id="select-duration"
+                    select.input{action 'saveSubscription' on='change'} id="select-duration"
                       option value=1
                         | Pay Per Month
                       option value=0
@@ -176,7 +175,7 @@
                   p class=showSubscription:show:hide
                     = user.subscription.humanizedExpiryDate
                   p class=editSubscription:edit:un-edit
-                    = date-picker date=mydate valueFormat='YYYY-MM-DD'
+                    = date-picker date=mydate valueFormat='YYYY-MM-DD' value=selectedExpiryDate
 
               tr class=scansLeftSelected:showblock:hide
                 td

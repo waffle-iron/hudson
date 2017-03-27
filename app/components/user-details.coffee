@@ -6,9 +6,11 @@ UserDetailsComponent = Ember.Component.extend
 
   newPassword: ""
   confirmPassword: ""
-  showScansLeft: ""
   selectedDuration: ""
+  selectedPricing: ""
+  selectedSource: ""
   totalScansLeft: ""
+  limitedScans: ""
   sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
 
   user: (->
@@ -168,7 +170,7 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-    updateSubscription: ->
+    saveSubscription: ->
       @set "selectedPricing", parseInt @$('#select-pricing').val()
       @set "selectedDuration", parseInt @$('#select-duration').val()
       @set "selectedSource", parseInt @$('#select-source').val()
@@ -180,31 +182,40 @@ UserDetailsComponent = Ember.Component.extend
         @set "scansLeftSelected", true
         @set "hasExpiryDate", false
         @set "expiryDateSelected", false
+        @set "limitedScans", true
 
       else
         @set "hasScansLeft", false
         @set "scansLeftSelected", false
         @set "hasExpiryDate", true
         @set "expiryDateSelected", true
+        @set "limitedScans", false
+        @set "totalScansLeft", 0
 
-
-    saveSubscription: ->
       selectedPricing = @get "selectedPricing"
       selectedDuration = @get "selectedDuration"
       selectedSource = @get "selectedSource"
-      showScansLeft = @get "showScansLeft"
+      totalScansLeft = @get "totalScansLeft"
+      selectedExpiryDate = @get "selectedExpiryDate"
+      limitedScans = @get "limitedScans"
+      if Ember.isEmpty limitedScans
+        limitedScans = @get "user.subscription.limitedScans"
       subscriptionId = @get "user.subscription.id"
       subscription = [ENV.endpoints.subscription, subscriptionId].join '/'
       that = @
       data =
-        "pricing-id": selectedPricing
-        "duration": selectedDuration
-        "source": selectedSource
-        "scans-left": showScansLeft
-      @get("ajax").patch subscription, data: data
+        "data":
+          "attributes":
+            "pricing-id": selectedPricing
+            "duration": selectedDuration
+            "source": selectedSource
+            "scans-left": totalScansLeft
+            "expiry-date": selectedExpiryDate
+            "limited-scans": limitedScans
+      @get("ajax").patch subscription, data: JSON.stringify data
       .then (data) ->
-        that.set "showHide", true
-        that.set "editUnedit", false
+        that.set "showSubscription", true
+        that.set "editSubscription", false
         that.get("notify").success "Subscription updated!"
       .catch (error) ->
         for error in error.errors
