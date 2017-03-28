@@ -7,7 +7,6 @@ UserDetailsComponent = Ember.Component.extend
   newPassword: ""
   confirmPassword: ""
 
-
   sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
   durations: ENUMS.PAYMENT_DURATION.CHOICES[0...-1]
 
@@ -155,10 +154,10 @@ UserDetailsComponent = Ember.Component.extend
       @set "updatedPricingPlan", parseInt @$('#updated-pricing-plan').val()
 
     updatedPaymentSource: ->
-      @set "updatedPricingPlan", parseInt @$('#updated-payment-source').val()
+      @set "updatedPaymentSource", parseInt @$('#updated-payment-source').val()
 
     updatedPaymentType: ->
-      updatedPaymentType = parseInt @$('#updated-payment-type').val()
+      updatedPaymentType = parseInt @$('.updated-payment-type').val()
       if updatedPaymentType is ENUMS.PLAN_TYPE.PER_SCAN
         @set "hasScansLeft", true
         @set "scansLeftSelected", true
@@ -232,6 +231,74 @@ UserDetailsComponent = Ember.Component.extend
         that.set "showSubscription", true
         that.set "editSubscription", false
         that.get("notify").success "Subscription Updated!"
+        setTimeout ->
+          window.location.reload() # FIXME: Hackish Way
+        ,
+          3 * 1000
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
+
+
+    addedPricing: ->
+      @set "addedPricing", parseInt @$('#added-pricing').val()
+
+    addedSource: ->
+      @set "addedSource", parseInt @$('#added-source').val()
+
+    changedPaymentType: ->
+      @set "changedPaymentType", parseInt @$('#added-payment-type').val()
+
+      changedPaymentType = @get "changedPaymentType"
+
+      if changedPaymentType is ENUMS.PLAN_TYPE.PER_SCAN
+        @set "showExpiryDate", false
+        @set "showScansLeft", true
+        @set "haslimitedScans", true
+      else
+        @set "showExpiryDate", true
+        @set "showScansLeft", false
+        @set "haslimitedScans", false
+        @set "totalScansLeft", 0
+
+    addedDuration: ->
+      @set "addedDuration", parseInt @$('#added-duration').val()
+
+
+    addNewSubscription: ->
+
+      addedPricing = @get "addedPricing"
+      addedSource = @get "addedSource"
+      addedDuration = @get "addedDuration"
+      addedPricing = @get "addedPricing"
+
+      totalScansLeft = @get "totalScansLeft"
+      haslimitedScans = @get "haslimitedScans"
+      selectedExpiryDate = @get "selectedExpiryDate"
+
+      userId = @get "user.id"
+      that = @
+      data =
+        "data":
+          "attributes":
+            "duration": addedDuration
+            "source": addedSource
+            "scans-left": totalScansLeft
+            "expiry-date": selectedExpiryDate
+            "limited-scans": haslimitedScans
+          "relationships":
+            "pricing":
+              "data":
+                "id": addedPricing
+                "type": "pricing"
+            "user":
+              "data":
+                "id": userId
+                "type": "user"
+          "type": "subscriptions"
+      @get("ajax").post ENV.endpoints.subscription, data: JSON.stringify data
+      .then (data) ->
+        that.get("notify").success "Subscription added!"
         setTimeout ->
           window.location.reload() # FIXME: Hackish Way
         ,
