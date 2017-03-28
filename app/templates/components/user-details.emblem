@@ -36,10 +36,10 @@
         td
           = user.userStatus
         td
-          p class=showHide:show:hide click="editText"
+          p class=showHide:show:hide click="editUser"
             = fa-icon "pencil"
 
-          p class=editUnedit:edit:un-edit click="saveText"
+          p class=editUnedit:edit:un-edit click="updateUser"
             = fa-icon "check"
 
           p.margin-left class=editUnedit:edit:un-edit click="cancelForm"
@@ -106,7 +106,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.pricing.name
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'updateSubscription' on='change'} id="select-pricing"
+                  select.input{action 'updatedPricingPlan' on='change'} id="updated-pricing-plan"
                     each pricings as |pricing|
                       option value=pricing.id
                         = pricing.name
@@ -117,7 +117,7 @@
                 p class=showSubscription:show:hide
                   = user.subscription.source
                 p class=editSubscription:edit:un-edit
-                  select.input{action 'updateSubscription' on='change'} id="select-source"
+                  select.input{action 'updatedPaymentSource' on='change'} id="updated-payment-source"
                     each sources as |source|
                       option value=source.value
                         = source.value
@@ -130,11 +130,11 @@
                     p class=showSubscription:show:hide
                       | Pay Per Scan
                     p class=editSubscription:edit:un-edit
-                      select.input{action 'updateSubscription' on='change'} id="select-duration"
+                      select.input{action 'updatedPaymentType' on='change'} id="updated-payment-type"
                         option value=0
                           | Pay Per Scan
                         option value=1
-                          | Pay Per Month
+                          | Regular User
 
               tr class=hasScansLeft:showblock:hide
                 td
@@ -143,9 +143,21 @@
                   p class=showSubscription:show:hide
                     = user.subscription.scansLeft
                   p class=editSubscription:edit:un-edit
-                    = input type=text value=totalScansLeft
+                    = input type=text value=totalScansLeft placeholder= user.subscription.scansLeft
 
-              tr class=expiryDateSelected:showblock:hide
+              tr class=regularUserSelected:showblock:hide
+                td
+                  | DURATION
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.duration
+                  p class=editSubscription:edit:un-edit
+                    select.input{action 'changedDuration' on='change'} id="changed-duration"
+                      each durations as |duration|
+                        option value=duration.value
+                          = duration.key
+
+              tr class=regularUserSelected:showblock:hide
                 td
                   | EXPIRY DATE
                 td
@@ -162,11 +174,23 @@
                   p class=showSubscription:show:hide
                     | Pay Per Month
                   p class=editSubscription:edit:un-edit
-                    select.input{action 'updateSubscription' on='change'} id="select-duration"
+                    select.input{action 'updatedSubscription' on='change'} id="updated-duration"
                       option value=1
                         | Pay Per Month
                       option value=0
                         | Pay Per Scan
+
+              tr class=hasExpiryDate:showblock:hide
+                td
+                  | DURATION
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.duration
+                  p class=editSubscription:edit:un-edit
+                    select.input{action 'updatedDuration' on='change'} id="updated-duration"
+                      each durations as |duration|
+                        option value=duration.value
+                          = duration.key
 
               tr class=hasExpiryDate:showblock:hide
                 td
@@ -181,7 +205,7 @@
                 td
                   | SCANS LEFT
                 td
-                  = input type=text value=totalScansLeft
+                  = input type=text value=totalScansLeft placeholder= user.subscription.scansLeft
 
       .columns
         .column

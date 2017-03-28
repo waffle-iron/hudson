@@ -29,7 +29,7 @@ ENUMS =
 
   PLAN_TYPE:
     PER_SCAN: 0
-    PER_MONTH: 1
+    REGULAR_USER: 1
 
 # Populate `CHOICES`
 for enumName, enumValues of ENUMS

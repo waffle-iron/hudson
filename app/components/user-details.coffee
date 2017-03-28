@@ -6,22 +6,13 @@ UserDetailsComponent = Ember.Component.extend
 
   newPassword: ""
   confirmPassword: ""
-  selectedDuration: ""
-  selectedPricing: ""
-  selectedSource: ""
-  addedDuration: ""
-  addedPricing: ""
-  addedSource: ""
-  totalScansLeft: ""
-  limitedScans: ""
+
+
   sources: ENUMS.PAYMENT_SOURCE.CHOICES[0...-1]
+  durations: ENUMS.PAYMENT_DURATION.CHOICES[0...-1]
 
   user: (->
     @get('store').createRecord('user')
-  ).property()
-
-  subscription: (->
-    @get('store').createRecord('subscription')
   ).property()
 
   isOverview: true
@@ -45,11 +36,10 @@ UserDetailsComponent = Ember.Component.extend
 
 
   hasScansLeft: true
-  expiryDateSelected: false
+  regularUserSelected: false
 
   hasExpiryDate: true
   scansLeftSelected: false
-
 
   pricings: (->
     store = @get "store"
@@ -100,7 +90,7 @@ UserDetailsComponent = Ember.Component.extend
       @set "addSubscription", true
       @set "subscriptionForm", false
 
-    editText: ->
+    editUser: ->
       @set "showHide", false
       @set "editUnedit", true
 
@@ -117,7 +107,7 @@ UserDetailsComponent = Ember.Component.extend
       @set "editSubscription", false
 
 
-    saveText: ->
+    updateUser: ->
       that = @
       user = @get 'user'
       user.save()
@@ -129,9 +119,6 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-    saveSubscription: ->
-      @set "showSubscription", true
-      @set "editSubscription", false
 
     changePassword: ->
       newPassword = @get "newPassword"
@@ -164,124 +151,87 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-    updateSubscription: ->
-      @set "selectedPricing", parseInt @$('#select-pricing').val()
-      @set "selectedDuration", parseInt @$('#select-duration').val()
-      @set "selectedSource", parseInt @$('#select-source').val()
+    updatedPricingPlan: ->
+      @set "updatedPricingPlan", parseInt @$('#updated-pricing-plan').val()
 
-      @set "addedPricing", parseInt @$('#add-pricing').val()
-      @set "addedDuration", parseInt @$('#add-duration').val()
-      @set "addedSource", parseInt @$('#add-source').val()
+    updatedPaymentSource: ->
+      @set "updatedPricingPlan", parseInt @$('#updated-payment-source').val()
 
-      selectedDuration = @get "selectedDuration"
-
-      if selectedDuration is ENUMS.PLAN_TYPE.PER_SCAN
+    updatedPaymentType: ->
+      updatedPaymentType = parseInt @$('#updated-payment-type').val()
+      if updatedPaymentType is ENUMS.PLAN_TYPE.PER_SCAN
         @set "hasScansLeft", true
         @set "scansLeftSelected", true
         @set "hasExpiryDate", false
-        @set "expiryDateSelected", false
-        @set "limitedScans", true
-
+        @set "regularUserSelected", false
+        @set "haslimitedScans", true
       else
         @set "hasScansLeft", false
         @set "scansLeftSelected", false
         @set "hasExpiryDate", true
-        @set "expiryDateSelected", true
-        @set "limitedScans", false
+        @set "regularUserSelected", true
+        @set "haslimitedScans", false
         @set "totalScansLeft", 0
 
-      addedDuration = @get "addedDuration"
+    changedDuration: ->
+      @set "updatedDuration", parseInt @$('#changed-duration').val()
 
-      if addedDuration is ENUMS.PLAN_TYPE.PER_SCAN
-        @set "limitedScans", true
-        @set "showScansLeft", true
-        @set "showExpiryDate", false
-      else
-        @set "limitedScans", false
-        @set "totalScansLeft", 0
-        @set "showScansLeft", false
-        @set "showExpiryDate", true
-
+    updatedDuration: ->
+      @set "updatedDuration", parseInt @$('#updated-duration').val()
 
     saveSubscription: ->
 
-      userId = @get "user.id"
-      selectedPricing = @get "selectedPricing"
-      selectedDuration = @get "selectedDuration"
-      selectedSource = @get "selectedSource"
+      pricingId = @get "user.subscription.pricing.id"
+      paymentSource = @get "user.subscription.source"
+      limitedScans = @get "user.subscription.limitedScans"
+      scansLeftCount = @get "user.subscription.scansLeft"
+      duration = @get "user.subscription.duration"
+
+      updatedPricingPlan = @get "updatedPricingPlan"
+      haslimitedScans = @get "haslimitedScans"
+      updatedPaymentSource = @get "updatedPaymentSource"
       totalScansLeft = @get "totalScansLeft"
+      updatedDuration = @get "updatedDuration"
       selectedExpiryDate = @get "selectedExpiryDate"
-      if selectedDuration is ENUMS.PLAN_TYPE.PER_SCAN
-          limitedScans = true
-      else
-          limitedScans = false
+
+      if Ember.isEmpty updatedPricingPlan
+        updatedPricingPlan = pricingId
+      if Ember.isEmpty updatedPaymentSource
+        updatedPaymentSource = paymentSource
+      if Ember.isEmpty haslimitedScans
+        haslimitedScans = limitedScans
+      if Ember.isEmpty totalScansLeft
+        totalScansLeft = scansLeftCount
+      if Ember.isEmpty updatedDuration
+        updatedDuration = duration
+
+      userId = @get "user.id"
       subscriptionId = @get "user.subscription.id"
       subscription = [ENV.endpoints.subscription, subscriptionId].join '/'
       that = @
       data =
         "data":
           "attributes":
-            "duration": selectedDuration
-            "source": selectedSource
+            "duration": updatedDuration
+            "source": updatedPaymentSource
             "scans-left": totalScansLeft
             "expiry-date": selectedExpiryDate
-            "limited-scans": limitedScans
+            "limited-scans": haslimitedScans
           "relationships":
             "pricing":
               "data":
-                "id": selectedPricing
+                "id": updatedPricingPlan
                 "type": "pricing"
             "user":
               "data":
                 "id": userId
                 "type": "user"
           "type": "subscriptions"
-
       @get("ajax").patch subscription, data: JSON.stringify data
       .then (data) ->
         that.set "showSubscription", true
         that.set "editSubscription", false
-        that.get("notify").success "Subscription updated!"
-      .catch (error) ->
-        for error in error.errors
-          that.get("notify").error error.detail?.message
-
-    addNewSubscription: ->
-
-      addedDuration = @get "addedDuration"
-      addedPricing = @get "addedPricing"
-      addedSource = @get "addedSource"
-      totalScansLeft = @get "totalScansLeft"
-      selectedExpiryDate = @get "selectedExpiryDate"
-
-      if addedDuration is ENUMS.PLAN_TYPE.PER_SCAN
-          limitedScans = true
-      else
-          limitedScans = false
-
-      userId = @get "user.id"
-      that = @
-      data =
-        "data":
-          "attributes":
-            "duration": addedDuration
-            "source": addedSource
-            "scans-left": totalScansLeft
-            "expiry-date": selectedExpiryDate
-            "limited-scans": limitedScans
-          "relationships":
-            "pricing":
-              "data":
-                "id": addedPricing
-                "type": "pricing"
-            "user":
-              "data":
-                "id": userId
-                "type": "user"
-          "type": "subscriptions"
-      @get("ajax").post ENV.endpoints.subscription, data: JSON.stringify data
-      .then (data) ->
-        that.get("notify").success "Subscription added!"
+        that.get("notify").success "Subscription Updated!"
         setTimeout ->
           window.location.reload() # FIXME: Hackish Way
         ,
@@ -289,5 +239,8 @@ UserDetailsComponent = Ember.Component.extend
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
+
+
+
 
 `export default UserDetailsComponent`
