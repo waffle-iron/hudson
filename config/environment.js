@@ -40,7 +40,8 @@ module.exports = function(environment) {
       routeIfAlreadyAuthenticated: 'authenticated.index'
     },
     endpoints: {
-      changePassword: 'change_password'
+      changePassword: 'change_password',
+      subscription: 'subscriptions'
     }
   };
 
