@@ -129,11 +129,16 @@ UserDetailsComponent = Ember.Component.extend
       userId = @get "user.id"
       changePassword = [ENV.endpoints.changePassword, userId].join '/'
       data =
-        password: newPassword
+        "data":
+          "attributes":
+            "password": confirmPassword
+          "type": "user"
       that = @
-      @get("ajax").post changePassword, data: data
+      @get("ajax").post changePassword, data: JSON.stringify data
       .then (data) ->
         that.get("notify").success "Password Changed"
+        that.set "newPassword", ''
+        that.set "confirmPassword", ''
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message

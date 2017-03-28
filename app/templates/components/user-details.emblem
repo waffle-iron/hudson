@@ -47,15 +47,15 @@
 
   .columns.margin-top10
     .column.box.is-one-third
+      h5
+        | Change Password
       form
         .control
-          label for="newPassword"
-            = input class="input" type="password" value=newPassword
-          br.margin-top10
-          label for="newPassword"
-            = input class="input" type="password" value=confirmPassword
-          button.is-primary.margin-top10 click="changePassword"
-            | Change password
+          = input class="input" type="password" value=newPassword placeholder="Enter the new password"
+        .control
+          = input class="input" type="password" value=confirmPassword placeholder="Confirm the new password"
+        button.is-primary.margin-top10 click="changePassword"
+          | Change password
 
 
   .columns
