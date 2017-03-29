@@ -18,6 +18,20 @@
         | Files
       div
         = stat.files
+  .columns.link-to
+    = link-to "authenticated.coupons" class="column card"
+      = fa-icon "fa-tags"
+      div
+        | Coupons
+      div
+        = stat.coupons
+    = link-to "authenticated.invoices" class="column card"
+      = fa-icon "fa-envelope"
+      div
+        | Invoices
+      div
+        = stat.invoices
+
   / .columns.activity-container-header
   /   .column.card.margin-left
   /     div

@@ -5,7 +5,7 @@
       div
         | Files
       div
-        | 350
+        = stat.files
 
 .sub-container
   .columns

@@ -4,6 +4,8 @@
       = fa-icon "fa-envelope"
       div
         | Invoices
+      div
+        = stat.invoices
 
 .sub-container
   .columns
