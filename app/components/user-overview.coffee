@@ -15,11 +15,8 @@ UserOverviewComponent = Ember.Component.extend
       user.destroyRecord()
       .then (data) ->
         that.get("notify").success "User " + userName + " has been deleted"
-        setTimeout ->
-          window.location.reload() # FIXME: Hackish Way
-        ,
-          3 * 1000
       .catch (error) ->
+        debugger
         for error in error.errors
           that.get("notify").error error.detail?.message
 

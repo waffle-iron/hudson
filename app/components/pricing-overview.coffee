@@ -15,10 +15,6 @@ PricingOverviewComponent = Ember.Component.extend
       pricing.destroyRecord()
       .then (data) ->
         that.get("notify").success "Pricing " + pricingName + " has been deleted"
-        setTimeout ->
-          window.location.reload() # FIXME: Hackish Way
-        ,
-          3 * 1000
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message

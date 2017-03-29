@@ -15,10 +15,6 @@ CouponOverviewComponent = Ember.Component.extend
       coupon.destroyRecord()
       .then (data) ->
         that.get("notify").success "Coupon " + couponCode + " has been deleted"
-        setTimeout ->
-          window.location.reload() # FIXME: Hackish way
-        ,
-          3 * 1000
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
