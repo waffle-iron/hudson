@@ -66,6 +66,7 @@ UserDetailsComponent = Ember.Component.extend
       "is-active"
 
   actions:
+
     displayOverview: ->
       @set "isOverview", true
       @set "isNamespace", false
@@ -105,7 +106,6 @@ UserDetailsComponent = Ember.Component.extend
       @set "showSubscription", true
       @set "editSubscription", false
 
-
     updateUser: ->
       that = @
       user = @get 'user'
@@ -117,7 +117,6 @@ UserDetailsComponent = Ember.Component.extend
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message
-
 
     changePassword: ->
       newPassword = @get "newPassword"
@@ -143,14 +142,31 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
+    anyNamespace: ->
+      @set "user.anyNamespace", !@get "user.anyNamespace"
+
     addNamespaces: ->
+      anyNamespace = @get "user.anyNamespace"
+      namespaces = @get "user.namespaces"
+
+      userId = @get "user.id"
+      namespace = [ENV.endpoints.namespace, userId].join '/'
       that = @
-      user = @get 'user'
-      user.save()
+      data =
+        "data":
+          "attributes":
+            "any-namespace": anyNamespace
+            "namespaces": namespaces
+          "type": "users"
+      @get("ajax").patch namespace, data: JSON.stringify data
       .then (data) ->
         that.set "showHide", true
         that.set "editUnedit", false
         that.get("notify").success "Namespace added!"
+        setTimeout ->
+          window.location.reload() # FIXME: Hackish Way
+        ,
+          3 * 1000
       .catch (error) ->
         for error in error.errors
           that.get("notify").error error.detail?.message

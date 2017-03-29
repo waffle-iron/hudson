@@ -41,7 +41,8 @@ module.exports = function(environment) {
     },
     endpoints: {
       changePassword: 'change_password',
-      subscription: 'subscriptions'
+      subscription: 'subscriptions',
+      namespace: 'namespace'
     }
   };
 

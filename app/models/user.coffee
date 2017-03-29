@@ -17,12 +17,6 @@ User = DS.Model.extend
   files: DS.hasMany 'file', inverse:'user'
   subscription: DS.belongsTo 'subscription', inverse:'user'
 
-  isAnyNamespace: (->
-    anyNamespace= @get "anyNamespace"
-    if anyNamespace is true
-      "checked"
-  ).property "anyNamespace"
-
   hasSubscription: (->
     subscriptionId = @get "subscription.id"
     !Ember.isEmpty subscriptionId

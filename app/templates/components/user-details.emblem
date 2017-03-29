@@ -87,11 +87,14 @@
      .column.box.is-one-third.margin-top10
         div
           form.namespace-form
-            p.control
-              = input class="form-control" type="checkbox" checked=user.isAnyNamespace
+            p.control click="anyNamespace"
+              if user.anyNamespace
+                = fa-icon "check"
+              else
+                = fa-icon "times"
               | &nbsp; Any Namespace
             p.control.is-fullwidth
-              = textarea class="form-control input" placeholder=user.namespaces type="text" value=user.namespaces
+              = textarea class="form-control input" type="text" value=user.namespaces
             button click="addNamespaces"
               | ADD NAMESPACES
   else
