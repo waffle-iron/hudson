@@ -9,6 +9,9 @@ CreateUserComponent = Ember.Component.extend
 
   actions:
 
+    anyNamespace: ->
+      @set "user.anyNamespace", !@get "user.anyNamespace"
+
     addUser: ->
       that = @
       user = @get 'user'

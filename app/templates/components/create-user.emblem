@@ -26,6 +26,12 @@
           = input class="form-control input" placeholder="First Name" type="text" value=user.firstName
         p.control
           = input class="form-control input" placeholder="Last Name" type="text" value=user.lastName
+        p.control click="anyNamespace"
+          if user.anyNamespace
+            = fa-icon "check"
+          else
+            = fa-icon "times"
+          | &nbsp; Any Namespace  
         p.control
           = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
   .modal-footer
