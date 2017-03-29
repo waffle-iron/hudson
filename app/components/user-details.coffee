@@ -330,7 +330,21 @@ UserDetailsComponent = Ember.Component.extend
         for error in error.errors
           that.get("notify").error error.detail?.message
 
-
+    deleteSubscription: ->
+      subscriptionId = @get "user.subscription.id"
+      subscription = [ENV.endpoints.subscription, subscriptionId].join '/'
+      return if !confirm "Do you want to delete this subscription?"
+      that = @
+      @get("ajax").delete subscription
+      .then (data) ->
+        that.get("notify").success "Subscription deleted successfully"
+        setTimeout ->
+          window.location.reload() # FIXME: Hackish Way
+        ,
+          3 * 1000
+      .catch (error) ->
+        for error in error.errors
+          that.get("notify").error error.detail?.message
 
 
 `export default UserDetailsComponent`

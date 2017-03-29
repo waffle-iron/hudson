@@ -204,6 +204,9 @@
           button.is-primary class=showSubscription:show:hide click="editSubscription"
               | EDIT SUBSCRIPTION
 
+          button.margin-left.is-primary class=showSubscription:show:hide click="deleteSubscription"
+              | DELETE SUBSCRIPTION
+
           button.is-primary class=editSubscription:edit:un-edit click="saveSubscription"
               | SAVE SUBSCRIPTION
 
