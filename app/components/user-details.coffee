@@ -291,11 +291,13 @@ UserDetailsComponent = Ember.Component.extend
       addedPricing = @get "addedPricing"
       addedSource = @get "addedSource"
       addedDuration = @get "addedDuration"
-      addedPricing = @get "addedPricing"
 
       totalScansLeft = @get "totalScansLeft"
       haslimitedScans = @get "haslimitedScans"
       selectedExpiryDate = @get "selectedExpiryDate"
+
+      if undefined in [addedPricing, addedSource, addedDuration, totalScansLeft, haslimitedScans, selectedExpiryDate ]
+        @get("notify").error "Please Enter/Select all the fields"
 
       userId = @get "user.id"
       that = @
