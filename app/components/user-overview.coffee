@@ -10,7 +10,9 @@ UserOverviewComponent = Ember.Component.extend
     deleteUser: ->
       user = @get 'user'
       userName = @get "user.username"
-      return if !confirm "Do you want to delete the user " + userName + "?"
+      deletedUser = prompt "Enter the username which you want to delete ", ""
+      if deletedUser isnt userName
+        return @get("notify").error "Enter the right username to delete it"
       that = @
       user.destroyRecord()
       .then (data) ->

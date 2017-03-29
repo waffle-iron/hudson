@@ -10,7 +10,9 @@ CouponOverviewComponent = Ember.Component.extend
     deleteCoupon: ->
       coupon = @get 'coupon'
       couponCode = @get "coupon.code"
-      return if !confirm "Do you want to delete the coupon " + couponCode + "?"
+      deletedCoupon = prompt "Enter the coupon code which you want to delete ", ""
+      if deletedCoupon isnt couponCode
+        return @get("notify").error "Enter the right coupon code to delete it"
       that = @
       coupon.destroyRecord()
       .then (data) ->
