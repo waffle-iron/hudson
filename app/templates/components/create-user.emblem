@@ -5,7 +5,7 @@
       div
         | Users
       div
-        | 140
+        = stat.users
   .columns.link-to click="openUserModal"
     .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "user-plus"
@@ -31,7 +31,7 @@
             = fa-icon "check"
           else
             = fa-icon "times"
-          | &nbsp; Any Namespace  
+          | &nbsp; Any Namespace
         p.control
           = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
   .modal-footer

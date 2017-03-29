@@ -4,6 +4,8 @@
       = fa-icon "fa-tags"
       div
         | Coupons
+      div
+        = stat.coupons
   .columns.link-to click="openCouponModal"
     .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "fa-plus"

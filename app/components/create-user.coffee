@@ -7,6 +7,10 @@ CreateUserComponent = Ember.Component.extend
     @get('store').createRecord('user')
   ).property()
 
+  stat: (->
+    @get('store').find('stat', 1)
+  ).property()
+
   actions:
 
     anyNamespace: ->

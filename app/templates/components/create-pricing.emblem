@@ -5,7 +5,7 @@
       div
         | Pricings
       div
-        | 20
+        = stat.pricings
   .columns.link-to click="openPricingModal"
     .column.card.is-one-third.margin-auto.pointed-cursor
       = fa-icon "fa-plus"

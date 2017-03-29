@@ -7,6 +7,10 @@ CreatePricingComponent = Ember.Component.extend
     @get('store').createRecord('pricing')
   ).property()
 
+  stat: (->
+    @get('store').find('stat', 1)
+  ).property()
+
   actions:
 
     addPricing: ->

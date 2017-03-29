@@ -7,6 +7,10 @@ CreateCouponComponent = Ember.Component.extend
     @get('store').createRecord('coupon')
   ).property()
 
+  stat: (->
+    @get('store').find('stat', 1)
+  ).property()
+
   actions:
 
     addCoupon: ->
