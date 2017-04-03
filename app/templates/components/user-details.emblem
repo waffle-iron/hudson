@@ -269,7 +269,7 @@
             .column
                 | Scans Left
                 br
-                = input type=number value=totalScansLeft placeholder="Enter the no of scans"
+                = input type=number class="input" value=totalScansLeft placeholder="Enter the no of scans"
 
           .columns class=showExpiryDate:show:hide
             .column

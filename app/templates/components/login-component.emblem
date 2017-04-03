@@ -1,7 +1,7 @@
 h3.has-text-centered
   | Sign In
 
-.columns
+.columns.login-section
   .column.flex-center.is-one-third.margin-auto
     form.login-form
       p.control.has-icon.has-icon-left
