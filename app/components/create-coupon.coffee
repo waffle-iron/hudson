@@ -16,6 +16,9 @@ CreateCouponComponent = Ember.Component.extend
     addCoupon: ->
       that = @
       coupon = @get 'coupon'
+      discount =  @get "coupon.discount"
+      discountPercentage = discount/100
+      coupon.set "discount", discountPercentage
       coupon.save()
       .then (data)->
         that.send "closeModal"
