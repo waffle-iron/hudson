@@ -123,19 +123,8 @@
                   select.input{action 'updatedPaymentSource' on='change'} id="updated-payment-source"
                     each sources as |source|
                       option value=source.value
-                        = source.value
+                        = source.key
 
-            tr
-              td
-                | DURATION
-              td
-                p class=showSubscription:show:hide
-                  = user.subscription.duration
-                p class=editSubscription:edit:un-edit
-                  select.input{action 'changedDuration' on='change'} id="changed-duration"
-                    each durations as |duration|
-                      option value=duration.value
-                        = duration.key
 
             if user.subscription.perScanSubscription
               tr
@@ -160,6 +149,17 @@
                   p class=editSubscription:edit:un-edit
                     = input type=text value=totalScansLeft placeholder= user.subscription.scansLeft
 
+              tr class=regularUserSelected:showblock:hide
+                td
+                  | DURATION
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.duration
+                  p class=editSubscription:edit:un-edit
+                    select.input{action 'changedDuration' on='change'} id="changed-duration"
+                      each durations as |duration|
+                        option value=duration.value
+                          = duration.key
 
               tr class=regularUserSelected:showblock:hide
                 td
@@ -183,6 +183,18 @@
                         | Pay Per Scan
                       option value=1
                         | Regular User
+
+              tr class=hasExpiryDate:showblock:hide
+                td
+                  | DURATION
+                td
+                  p class=showSubscription:show:hide
+                    = user.subscription.duration
+                  p class=editSubscription:edit:un-edit
+                    select.input{action 'changedDuration' on='change'} id="changed-duration"
+                      each durations as |duration|
+                        option value=duration.value
+                          = duration.key
 
               tr class=hasExpiryDate:showblock:hide
                 td
@@ -243,17 +255,7 @@
                     | Select a payment source
                   each sources as |source|
                     option value=source.value
-                      = source.value
-
-          .columns
-            .column
-                | Duration
-                select.input{action 'addedDuration' on='change'} id="added-duration"
-                  option
-                    | Select a payment duration
-                  each durations as |duration|
-                    option value=duration.value
-                      = duration.key
+                      = source.key
 
           .columns
             .column.is-half
@@ -272,6 +274,14 @@
                 = input type=number class="input" value=totalScansLeft placeholder="Enter the no of scans"
 
           .columns class=showExpiryDate:show:hide
+            .column
+                | Duration
+                select.input{action 'addedDuration' on='change'} id="added-duration"
+                  option
+                    | Select a payment duration
+                  each durations as |duration|
+                    option value=duration.value
+                      = duration.key
             .column
                 | Expiry Date
                 br

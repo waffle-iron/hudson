@@ -276,6 +276,7 @@ UserDetailsComponent = Ember.Component.extend
         @set "showExpiryDate", false
         @set "showScansLeft", true
         @set "haslimitedScans", true
+        @set "addedDuration", 0
       else
         @set "showExpiryDate", true
         @set "showScansLeft", false
