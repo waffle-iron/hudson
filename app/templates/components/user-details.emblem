@@ -118,7 +118,7 @@
                 | SOURCE
               td
                 p class=showSubscription:show:hide
-                  = user.subscription.source
+                  = user.subscription.sourceType
                 p class=editSubscription:edit:un-edit
                   select.input{action 'updatedPaymentSource' on='change'} id="updated-payment-source"
                     each sources as |source|

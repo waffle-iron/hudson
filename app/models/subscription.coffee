@@ -1,4 +1,5 @@
 `import DS from 'ember-data'`
+`import ENUMS from 'hudson/enums'`
 
 Subscription = DS.Model.extend
 
@@ -19,5 +20,15 @@ Subscription = DS.Model.extend
     expiryDate = @get "expiryDate"
     expiryDate?.toLocaleDateString()
   ).property "expiryDate"
+
+  sourceType: (->
+    switch @get "source"
+      when ENUMS.PAYMENT_SOURCE.PAYPAL then "Paypal"
+      when ENUMS.PAYMENT_SOURCE.STRIPE_MANUAL then "Stripe Manual"
+      when ENUMS.PAYMENT_SOURCE.BANK_TRANSFER then "Bank Transfer"
+      when ENUMS.PAYMENT_SOURCE.MANUAL then "Manual"
+      when ENUMS.PAYMENT_SOURCE.STRIPE_RECURRING then "Stripe Recurring"
+      else "unknown"
+  ).property "source"
 
 `export default Subscription`
