@@ -32,7 +32,7 @@
           p class=showHide:show:hide
             = pricing.descriptionItems
           p class=editUnedit:edit:un-edit
-            = textarea class="input" placeholder=pricing.descriptionItems value=pricing.descriptionItems
+            = textarea class="input description" placeholder=pricing.descriptionItems value=pricing.descriptionItems
         td
           p class=showHide:show:hide click="editText"
             = fa-icon "pencil"
