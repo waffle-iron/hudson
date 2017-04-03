@@ -23,7 +23,7 @@
         p.control
           = input class="form-control input" placeholder="Project Limit" type="number" value=pricing.projectsLimit
         p.control
-          = textarea class="form-control input" placeholder="Description" type="text" value=pricing.description
+          = textarea class="form-control input description" placeholder="Description" type="text" value=pricing.description
   .modal-footer
     button.margin-top10 click="addPricing"
      | Add Pricing
