@@ -19,6 +19,7 @@ Router.map ->
     @route 'coupons', path: '/coupons',
     @route 'coupon', path: '/coupon/:couponId',
     @route 'files', path: '/files',
-    @route 'invoices', path: 'invoices'
+    @route 'invoices', path: 'invoices',
+    @route 'invoice', path: 'invoice/:invoiceId'
 
 `export default Router;`

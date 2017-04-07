@@ -12,6 +12,7 @@ export default function() {
    this.get('/coupons/:id', 'coupon');
    this.get('/files', 'file');
    this.get('/invoices', 'invoice');
+   this.get('/invoices/:id', 'invoice');
 
    this.post('/login', () => {
     return {user_id: '1', token: 'secret'};
