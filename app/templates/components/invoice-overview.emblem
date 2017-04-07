@@ -12,3 +12,6 @@ td
   = invoice.durationText
 td
   = invoice.sourceType
+td
+  = link-to 'authenticated.invoice' invoice.id
+     | view  
