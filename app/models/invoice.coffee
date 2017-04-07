@@ -34,4 +34,9 @@ Invoice = DS.Model.extend
     paidOn.toLocaleDateString()
   ).property "paidOn"
 
+  hasDiscount: (->
+    discount = @get "coupon.discount"
+    typeof(discount) isnt "undefined"
+  ).property "coupon.discount"
+
 `export default Invoice`
