@@ -10,6 +10,10 @@ module.exports = function(environment) {
       autoClear: true,
       duration: 4000 // Milliseconds
     },
+    paginate: {
+      perPageLimit: 9,
+      pagePadding: 5
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
