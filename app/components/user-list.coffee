@@ -6,6 +6,8 @@ UserListComponent = Ember.Component.extend PaginateMixin,
   query: ""
   targetObject: "user"
 
+  sortProperties: ["id"]
+
   newUserObserver: Ember.observer "realtime.UserCount", ->
     @incrementProperty "version"
 

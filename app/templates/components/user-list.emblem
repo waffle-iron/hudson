@@ -13,5 +13,8 @@
           | Delete
         th
           | Update
-      each users as |user|
-        = user-overview user=user
+      if hasObjects
+        each sortedObjects as |user|
+          = user-overview user=user
+
+= partial "paginate"
