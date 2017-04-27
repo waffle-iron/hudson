@@ -1,6 +1,4 @@
 td
-  = fa-icon "fa-tags"
-td
   = coupon.code
 td
   = coupon.discount
