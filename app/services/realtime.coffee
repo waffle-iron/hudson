@@ -6,5 +6,6 @@ RealtimeService = Ember.Service.extend
   PricingCount: 0
   FileCount: 0
   CouponCount: 0
+  InvoiceCount: 0
 
 `export default RealtimeService`

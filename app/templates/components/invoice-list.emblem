@@ -7,6 +7,10 @@
       div
         = stat.invoices
 
+.columns
+  .column.is-one-quarter.margin-auto
+    = input class="input" placeholder="Search" value=query
+
 .sub-container
   .columns
     .column
@@ -28,5 +32,8 @@
             | Payment Source
           th
             | Invoice Details
-        each invoices as |invoice|
-          = invoice-overview invoice=invoice
+        if hasObjects
+          each sortedObjects as |invoice|
+            = invoice-overview invoice=invoice
+
+= partial "paginate"
