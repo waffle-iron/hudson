@@ -46,8 +46,6 @@ PaginateMixin = Ember.Mixin.create
   objectCount: Ember.computed.alias 'objects.length'
   hasObjects: Ember.computed.gt 'objectCount', 0
 
-
-
   maxOffset: Ember.computed "meta.total", "limit", ->
     limit = @get "limit"
     total = @get "meta.total" or 0
@@ -100,7 +98,6 @@ PaginateMixin = Ember.Mixin.create
 
   setOffset: (offset) ->
     @set "offset", offset
-
 
   actions:
 
