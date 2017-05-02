@@ -1,5 +1,8 @@
 `import Ember from 'ember'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 PricingDetailsComponent = Ember.Component.extend
 
   pricing: (->
@@ -20,6 +23,14 @@ PricingDetailsComponent = Ember.Component.extend
       @set "editUnedit", false
 
     saveText: ->
+      name = @get "pricing.name"
+      price = @get "pricing.price"
+      projectsLimit = @get "pricing.projectsLimit"
+      description = @get "pricing.description"
+
+      for inputValue in [name,price,projectsLimit,description]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       pricing = @get 'pricing'
       pricing.save()

@@ -32,4 +32,6 @@ export default function() {
     return;
    });
    this.post('/subscriptions', 'subscription');
+
+   this.patch('/user/:id', 'user');
 }

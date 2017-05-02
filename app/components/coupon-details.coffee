@@ -1,5 +1,8 @@
 `import Ember from 'ember'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 CouponDetailsComponent = Ember.Component.extend
 
   coupon: (->
@@ -20,6 +23,12 @@ CouponDetailsComponent = Ember.Component.extend
       @set "editUnedit", false
 
     saveText: ->
+      code = @get "coupon.code"
+      discount = @get "coupon.discount"
+
+      for inputValue in [code,discount]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       coupon = @get 'coupon'
       coupon.save()
