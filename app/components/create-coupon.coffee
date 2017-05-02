@@ -1,6 +1,9 @@
 `import Ember from 'ember'`
 `import ENV from 'hudson/config/environment'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 CreateCouponComponent = Ember.Component.extend
 
   coupon: (->
@@ -14,6 +17,12 @@ CreateCouponComponent = Ember.Component.extend
   actions:
 
     addCoupon: ->
+      code = @get "coupon.code"
+      discount = @get "coupon.discount"
+
+      for inputValue in [code,discount]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       coupon = @get 'coupon'
       discount =  @get "coupon.discount"
