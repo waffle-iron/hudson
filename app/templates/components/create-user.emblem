@@ -34,6 +34,5 @@
           | &nbsp; Any Namespace
         p.control
           = textarea class="form-control input" placeholder="Namespaces" type="text" value=user.namespaces
-  .modal-footer
-    button.margin-top10 click="addUser"
-     | Add User
+        button.margin-top10 click="addUser"
+         | Add User
