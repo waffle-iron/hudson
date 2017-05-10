@@ -11,7 +11,9 @@ PricingOverviewComponent = Ember.Component.extend
       pricing = @get 'pricing'
       pricingName = @get "pricing.name"
       deletedPricing = prompt "Enter the pricing name which you want to delete ", ""
-      if deletedPricing isnt pricingName
+      if deletedPricing is null
+        return
+      else if deletedPricing isnt pricingName
         return @get("notify").error "Enter the right pricing name to delete it"
       that = @
       pricing.destroyRecord()
