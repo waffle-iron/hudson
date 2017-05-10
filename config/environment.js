@@ -11,7 +11,7 @@ module.exports = function(environment) {
       duration: 4000 // Milliseconds
     },
     paginate: {
-      perPageLimit: 9,
+      perPageLimit: 10,
       pagePadding: 5
     },
     EmberENV: {
