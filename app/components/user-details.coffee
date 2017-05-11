@@ -2,6 +2,9 @@
 `import ENUMS from 'hudson/enums'`
 `import ENV from 'hudson/config/environment'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 UserDetailsComponent = Ember.Component.extend
 
   newPassword: ""
@@ -107,6 +110,13 @@ UserDetailsComponent = Ember.Component.extend
       @set "editSubscription", false
 
     updateUser: ->
+      fullName = @get "user.fullName"
+      username = @get "user.username"
+      email = @get "user.email"
+
+      for inputValue in [fullName,username,email]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       user = @get 'user'
       user.save()

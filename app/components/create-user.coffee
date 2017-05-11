@@ -1,6 +1,9 @@
 `import Ember from 'ember'`
 `import ENV from 'hudson/config/environment'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 CreateUserComponent = Ember.Component.extend
 
   user: (->
@@ -17,6 +20,16 @@ CreateUserComponent = Ember.Component.extend
       @set "user.anyNamespace", !@get "user.anyNamespace"
 
     addUser: ->
+      username = @get "user.username"
+      email = @get "user.email"
+      password = @get "user.password"
+      firstName = @get "user.firstName"
+      lastName = @get "user.lastName"
+      namespaces = @get "user.namespaces"
+
+      for inputValue in [username,email,password,firstName,lastName,namespaces]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       user = @get 'user'
       user.save()
@@ -24,8 +37,8 @@ CreateUserComponent = Ember.Component.extend
         that.send "closeModal"
         that.get("notify").success "User added!"
       .catch (error) ->
-        for error in error.errors
-          that.get("notify").error error.detail?.message
+        for error in error?.errors
+          that.get("notify").error error?.detail?.message
 
 
     openUserModal: ->

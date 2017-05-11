@@ -7,6 +7,10 @@
       div
         = stat.files
 
+.columns
+  .column.is-one-quarter.margin-auto
+    = input class="input" placeholder="Search" value=query
+
 .sub-container
   .columns
     .column
@@ -20,5 +24,8 @@
             | Username
           th
             | Package Name
-        each files as |file|
-          = file-overview file=file
+        if hasObjects
+          each sortedObjects as |file|
+            = file-overview file=file
+
+= partial "paginate"

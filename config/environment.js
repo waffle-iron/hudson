@@ -10,6 +10,10 @@ module.exports = function(environment) {
       autoClear: true,
       duration: 4000 // Milliseconds
     },
+    paginate: {
+      perPageLimit: 10,
+      pagePadding: 5
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -60,7 +64,7 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: false
     };
-    ENV['host'] = "http://192.168.0.162:8000";
+    ENV['host'] = "http://localhost:8000";
   }
 
   if (environment === 'development') {

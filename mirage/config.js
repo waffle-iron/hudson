@@ -14,6 +14,8 @@ export default function() {
    this.get('/invoices', 'invoice');
    this.get('/invoices/:id', 'invoice');
 
+   this.get('/stats/1', 'invoice');
+
    this.post('/login', () => {
     return {user_id: '1', token: 'secret'};
    });
@@ -30,4 +32,6 @@ export default function() {
     return;
    });
    this.post('/subscriptions', 'subscription');
+
+   this.patch('/user/:id', 'user');
 }

@@ -1,6 +1,9 @@
 `import Ember from 'ember'`
 `import ENV from 'hudson/config/environment'`
 
+isEmpty = (inputValue)->
+  return Ember.isEmpty inputValue
+
 CreatePricingComponent = Ember.Component.extend
 
   pricing: (->
@@ -14,6 +17,14 @@ CreatePricingComponent = Ember.Component.extend
   actions:
 
     addPricing: ->
+      name = @get "pricing.name"
+      price = @get "pricing.price"
+      projectsLimit = @get "pricing.projectsLimit"
+      description = @get "pricing.description"
+
+      for inputValue in [name,price,projectsLimit,description]
+        return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
       that = @
       pricing = @get 'pricing'
       pricing.save()

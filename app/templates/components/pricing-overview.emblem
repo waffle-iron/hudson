@@ -1,6 +1,4 @@
 td
-  = fa-icon "fa-plus"
-td
   = pricing.name
 td
   = pricing.price

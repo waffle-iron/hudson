@@ -1,4 +1,7 @@
 .columns
+  .column.is-one-quarter.margin-auto
+    = input class="input" placeholder="Search" value=query
+.columns
   .column
     table.users-table
       tr
@@ -10,5 +13,8 @@
           | Delete
         th
           | Update
-      each users as |user|
-        = user-overview user=user
+      if hasObjects
+        each sortedObjects as |user|
+          = user-overview user=user
+
+= partial "paginate"
