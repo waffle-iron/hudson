@@ -25,19 +25,19 @@ module.exports = function(deployTarget) {
     ENV.build.environment = 'staging';
     // configure other plugins for staging deploy target here
 
-    // ENV.cloudfront = {
-    //   distribution: 'E2YVUU4RPYNUI2',
-    //   objectPaths: ['/*']
-    // }
+    ENV.cloudfront = {
+      distribution: 'E17GXVYW7G712O',
+      objectPaths: ['/*']
+    }
   }
 
   if (deployTarget === 'production') {
     ENV.build.environment = 'production';
     // configure other plugins for production deploy target here
 
-    // ENV.cloudfront = {
-    //   distribution: 'E1SR2PB8XTR9RC'
-    // }
+    ENV.cloudfront = {
+      distribution: 'E17GXVYW7G712O'
+    }
   }
 
   // Note: if you need to build some configuration asynchronously, you can return
