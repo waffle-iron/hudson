@@ -29,7 +29,8 @@ CreateUserComponent = Ember.Component.extend
       namespaces = @get "user.namespaces"
 
       if !anyNamespace
-        return @get("notify").error "Please fill all the details"
+        for inputValue in [namespaces]
+          return @get("notify").error "Please fill all the details" if isEmpty inputValue
 
       for inputValue in [username,email,password,firstName,lastName]
         return @get("notify").error "Please fill all the details" if isEmpty inputValue
