@@ -25,9 +25,13 @@ CreateUserComponent = Ember.Component.extend
       password = @get "user.password"
       firstName = @get "user.firstName"
       lastName = @get "user.lastName"
+      anyNamespace = @get "user.anyNamespace"
       namespaces = @get "user.namespaces"
 
-      for inputValue in [username,email,password,firstName,lastName,namespaces]
+      if !anyNamespace
+        return @get("notify").error "Please fill all the details"
+
+      for inputValue in [username,email,password,firstName,lastName]
         return @get("notify").error "Please fill all the details" if isEmpty inputValue
 
       that = @
