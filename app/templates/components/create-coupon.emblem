@@ -15,7 +15,7 @@
 = modal-card isActive=showCouponModal title="Add Coupon"
   .card-body
     .card-wrapper
-      form
+      form id="create-coupon"
         p.control
           = input class="form-control input" placeholder="Name" type="text" value=coupon.code
         p.control

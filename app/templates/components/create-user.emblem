@@ -15,7 +15,7 @@
 = modal-card isActive=showUserModal title="Add User"
   .card-body
     .card-wrapper
-      form
+      form id="create-user"
         p.control
           = input class="form-control input" placeholder="Username" type="text" value=user.username
         p.control

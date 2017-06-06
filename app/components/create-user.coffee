@@ -40,6 +40,7 @@ CreateUserComponent = Ember.Component.extend
       user.save()
       .then (data) ->
         that.send "closeModal"
+        $('#create-user').find("input, textarea").val("")
         that.get("notify").success "User added!"
       .catch (error) ->
         for error in error?.errors
