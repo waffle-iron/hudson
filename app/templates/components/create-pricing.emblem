@@ -15,7 +15,7 @@
 = modal-card isActive=showPricingModal title="Add Pricing"
   .card-body
     .card-wrapper
-      form
+      form id="create-pricing"
         p.control
           = input class="form-control input" placeholder="Name" type="text" value=pricing.name
         p.control

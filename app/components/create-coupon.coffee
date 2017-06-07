@@ -31,6 +31,7 @@ CreateCouponComponent = Ember.Component.extend
       coupon.save()
       .then (data)->
         that.send "closeModal"
+        $('#create-coupon').find("input").val("")
         that.get("notify").success "Coupon added!"
       .catch (error) ->
         for error in error.errors
