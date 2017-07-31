@@ -30,6 +30,7 @@ CreatePricingComponent = Ember.Component.extend
       pricing.save()
       .then (data)->
         that.send "closeModal"
+        $('#create-pricing').find("input, textarea").val("")
         that.get("notify").success "Pricing added!"
       .catch (error) ->
         for error in error.errors

@@ -25,9 +25,14 @@ CreateUserComponent = Ember.Component.extend
       password = @get "user.password"
       firstName = @get "user.firstName"
       lastName = @get "user.lastName"
+      anyNamespace = @get "user.anyNamespace"
       namespaces = @get "user.namespaces"
 
-      for inputValue in [username,email,password,firstName,lastName,namespaces]
+      if !anyNamespace
+        for inputValue in [namespaces]
+          return @get("notify").error "Please fill all the details" if isEmpty inputValue
+
+      for inputValue in [username,email,password,firstName,lastName]
         return @get("notify").error "Please fill all the details" if isEmpty inputValue
 
       that = @
@@ -35,6 +40,7 @@ CreateUserComponent = Ember.Component.extend
       user.save()
       .then (data) ->
         that.send "closeModal"
+        $('#create-user').find("input, textarea").val("")
         that.get("notify").success "User added!"
       .catch (error) ->
         for error in error?.errors
