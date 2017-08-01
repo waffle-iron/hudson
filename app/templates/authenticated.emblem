@@ -32,8 +32,8 @@
             = link-to 'authenticated.invoices'
               | Invoices
           li
-            = link-to 'authenticated.report'
-              | Report
+            = link-to 'authenticated.reports'
+              | Reports
 
     .column
        = outlet

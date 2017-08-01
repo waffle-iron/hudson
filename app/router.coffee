@@ -21,7 +21,7 @@ Router.map ->
     @route 'files', path: '/files',
     @route 'invoices', path: 'invoices',
     @route 'invoice', path: 'invoice/:invoiceId',
-    @route 'report', path: 'report'
+    @route 'reports', path: 'reports'
   @route 'reset'
 
 
