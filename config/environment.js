@@ -48,7 +48,8 @@ module.exports = function(environment) {
       subscription: 'subscriptions',
       namespace: 'namespace',
       recover: 'recover',
-      reset: 'reset'
+      reset: 'reset',
+      downloadReport: 'download_report'
 
     }
   };

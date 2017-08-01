@@ -6,6 +6,6 @@
           | Download Report
         form.input-form
           p.control
-            = input class="form-control input" placeholder="Enter the file number" type="text"
-          button
+            = input class="form-control input" id="file-number" placeholder="Enter the file number" type="text" value=fileNumber
+          button.is-primary click="downloadReport"
             | Download Report
