@@ -23,6 +23,7 @@ Router.map ->
     @route 'invoice', path: 'invoice/:invoiceId',
     @route 'reports', path: 'reports'
     @route 'scans', path: 'scans'
+    @route 'analyses', path: 'analyses'
   @route 'reset'
 
 `export default Router;`

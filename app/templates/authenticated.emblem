@@ -37,6 +37,9 @@
           li
             = link-to 'authenticated.scans'
               | Scans
+          li
+            = link-to 'authenticated.analyses'
+              | Analyses
 
     .column
        = outlet
