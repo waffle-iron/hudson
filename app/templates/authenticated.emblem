@@ -40,6 +40,9 @@
           li
             = link-to 'authenticated.analyses'
               | Analyses
+          li
+            = link-to 'authenticated.apps'
+              | Apps
 
     .column
        = outlet

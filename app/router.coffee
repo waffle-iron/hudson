@@ -24,6 +24,7 @@ Router.map ->
     @route 'reports', path: 'reports'
     @route 'scans', path: 'scans'
     @route 'analyses', path: 'analyses'
+    @route 'apps', path: 'apps'
   @route 'reset'
 
 `export default Router;`
