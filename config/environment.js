@@ -49,7 +49,8 @@ module.exports = function(environment) {
       namespace: 'namespace',
       recover: 'recover',
       reset: 'reset',
-      downloadReport: 'download_report'
+      downloadReport: 'download_report',
+      downloadApp: 'download_app'
 
     }
   };

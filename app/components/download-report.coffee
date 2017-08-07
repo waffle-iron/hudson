@@ -6,7 +6,6 @@ DownloadReportComponent = Ember.Component.extend
   actions:
     downloadReport: ->
       fileId = @$('#file-number').val()
-      debugger
       data =
         file_id: fileId
         submit: "Download"
