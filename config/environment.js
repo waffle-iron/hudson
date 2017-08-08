@@ -55,7 +55,8 @@ module.exports = function(environment) {
       signedUrl: 'signed_url',
       purgeAPIAnalyses: 'purge_api_analyses',
       dynamicScan: 'dynamic_scan',
-      apiScan: 'api_scan'
+      apiScan: 'api_scan',
+      startApiScan: 'start_api_scan'
 
     }
   };
