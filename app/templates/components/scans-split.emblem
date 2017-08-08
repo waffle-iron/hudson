@@ -12,6 +12,7 @@
 
 if isDynamicScan
   = dynamic-scans files=files
+  = active-devices 
 
 else if isAPIScan
   = api-scans

@@ -7,7 +7,7 @@ td
 td
   = file.name
 td
-  = file.dynamic_date
+  = file.dynamicDate
 td
   div.pointed-cursor click="stopDynamicScan"
     = fa-icon "fa-stop-circle"

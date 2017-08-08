@@ -13,6 +13,7 @@ export default function() {
    this.get('/files', 'file');
    this.get('/invoices', 'invoice');
    this.get('/invoices/:id', 'invoice');
+   this.get('/devices', 'device');
 
    this.get('/stats/1', 'invoice');
 
