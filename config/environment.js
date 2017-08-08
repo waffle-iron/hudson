@@ -52,7 +52,8 @@ module.exports = function(environment) {
       downloadReport: 'download_report',
       downloadApp: 'download_app',
       uploadedFile: 'uploaded_file',
-      signedUrl: 'signed_url'
+      signedUrl: 'signed_url',
+      purgeAPIAnalyses: 'purge_api_analyses'
 
     }
   };
