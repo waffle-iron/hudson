@@ -16,6 +16,7 @@ User = DS.Model.extend
   collaborations: DS.hasMany 'collaboration', inverse:'user'
   files: DS.hasMany 'file', inverse:'user'
   subscription: DS.belongsTo 'subscription', inverse:'user'
+  ownedProjects: DS.hasMany 'project', inverse:'owner'
 
   hasSubscription: (->
     subscriptionId = @get "subscription.id"
