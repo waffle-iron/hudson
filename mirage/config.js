@@ -32,6 +32,15 @@ export default function() {
    this.post('/users', () => {
     return;
    });
+
+   this.post('/api_scan', () => {
+    return;
+   });
+
+   this.post('/dynamic_scan', () => {
+    return;
+   });
+
    this.post('/subscriptions', 'subscription');
 
    this.patch('/user/:id', 'user');

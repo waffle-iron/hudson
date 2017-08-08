@@ -54,7 +54,8 @@ module.exports = function(environment) {
       uploadedFile: 'uploaded_file',
       signedUrl: 'signed_url',
       purgeAPIAnalyses: 'purge_api_analyses',
-      dynamicScan: 'dynamic_scan'
+      dynamicScan: 'dynamic_scan',
+      apiScan: 'api_scan'
 
     }
   };
