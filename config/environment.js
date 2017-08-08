@@ -50,7 +50,9 @@ module.exports = function(environment) {
       recover: 'recover',
       reset: 'reset',
       downloadReport: 'download_report',
-      downloadApp: 'download_app'
+      downloadApp: 'download_app',
+      uploadedFile: 'uploaded_file',
+      signedUrl: 'signed_url'
 
     }
   };

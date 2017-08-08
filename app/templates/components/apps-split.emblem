@@ -26,7 +26,26 @@ else if isSearchDownloadApp
   = search-download-app
 
 else if isUploadApp
-  = upload-app
+  .columns
+    .column
+      .box.margin-top10
+        .margin-auto
+          h3
+            | Upload App
+          form.input-form
+            p.control
+              = input class="form-control input" id="user-id" placeholder="Enter the User ID" type="text" value=userId
+            p.control
+              label.button.is-primary
+                = upload-app delegate=this
+                = fa-icon "upload"
+                | &nbsp;
+                if isUploading
+                  | Uploading :
+                  = progress
+                  | &nbsp; %
+                else
+                  | Upload
 
 else if isSearchUploadApp
   = search-upload-app
