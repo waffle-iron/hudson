@@ -53,7 +53,8 @@ module.exports = function(environment) {
       downloadApp: 'download_app',
       uploadedFile: 'uploaded_file',
       signedUrl: 'signed_url',
-      purgeAPIAnalyses: 'purge_api_analyses'
+      purgeAPIAnalyses: 'purge_api_analyses',
+      dynamicScan: 'dynamic_scan'
 
     }
   };

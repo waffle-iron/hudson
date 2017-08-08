@@ -11,10 +11,10 @@
         | Start API Scans
 
 if isDynamicScan
-  = dynamic-scans
+  = dynamic-scans files=files
 
 else if isAPIScan
   = api-scans
 
 else
-  = start-api-scan 
+  = start-api-scan

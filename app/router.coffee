@@ -19,12 +19,12 @@ Router.map ->
     @route 'coupons', path: '/coupons',
     @route 'coupon', path: '/coupon/:couponId',
     @route 'files', path: '/files',
-    @route 'invoices', path: 'invoices',
-    @route 'invoice', path: 'invoice/:invoiceId',
+    @route 'invoices', path: '/invoices',
+    @route 'invoice', path: '/invoice/:invoiceId',
     @route 'reports', path: 'reports'
-    @route 'scans', path: 'scans'
-    @route 'analyses', path: 'analyses'
-    @route 'apps', path: 'apps'
+    @route 'scans', path: '/scans'
+    @route 'analyses', path: '/analyses'
+    @route 'apps', path: '/apps'
   @route 'reset'
 
 `export default Router;`
