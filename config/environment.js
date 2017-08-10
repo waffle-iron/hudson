@@ -56,7 +56,8 @@ module.exports = function(environment) {
       purgeAPIAnalyses: 'purge_api_analyses',
       dynamicScan: 'dynamic_scan',
       apiScan: 'api_scan',
-      startApiScan: 'start_api_scan'
+      startApiScan: 'start_api_scan',
+      generateReport: 'generate_report'
 
     }
   };

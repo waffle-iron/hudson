@@ -45,6 +45,10 @@ export default function() {
     return;
    });
 
+   this.post('/generate_report', () => {
+    return;
+   });
+
    this.post('/subscriptions', 'subscription');
 
    this.patch('/user/:id', 'user');
