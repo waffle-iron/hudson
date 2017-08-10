@@ -1,8 +1,11 @@
 `import DS from 'ember-data'`
+`import ENUMS from 'hudson/enums'`
 
 User = DS.Model.extend
   uuid: DS.attr 'string'
   username: DS.attr 'string'
+  role: DS.attr 'number'
+  department: DS.attr 'number'
   email: DS.attr 'string'
   password: DS.attr 'string'
   firstName: DS.attr 'string'
@@ -17,6 +20,29 @@ User = DS.Model.extend
   files: DS.hasMany 'file', inverse:'user'
   subscription: DS.belongsTo 'subscription', inverse:'user'
   ownedProjects: DS.hasMany 'project', inverse:'owner'
+
+  showSalesDashboard: (->
+    role = @get "role"
+    department = @get "department"
+    if role is ENUMS.USER_ROLE.CO_FOUNDER
+      true
+    else if role is ENUMS.USER_ROLE.EMPLOYEE and department is ENUMS.USER_DEPARTMENT.SALES
+      true
+    else
+      false
+  ).property "role", "department"
+
+  showSecurityDashboard: (->
+    role = @get "role"
+    department = @get "department"
+    if role is ENUMS.USER_ROLE.CO_FOUNDER
+      true
+    else if role is ENUMS.USER_ROLE.EMPLOYEE and department is ENUMS.USER_DEPARTMENT.SECURITY
+      true
+    else
+      false
+  ).property "role", "department"
+
 
   hasSubscription: (->
     subscriptionId = @get "subscription.id"
