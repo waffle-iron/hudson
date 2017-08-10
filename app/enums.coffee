@@ -31,6 +31,19 @@ ENUMS =
     PER_SCAN: 0
     REGULAR_USER: 1
 
+  USER_ROLE:
+    CO_FOUNDER: 1
+    EMPLOYEE: 2
+    PARTNER: 3
+    REGULAR: 4
+
+  USER_DEPARTMENT:
+    TECHNOLOGY: 1
+    SECURITY: 2
+    SALES: 3
+    MARKETING: 4
+    DESIGN: 5
+
 # Populate `CHOICES`
 for enumName, enumValues of ENUMS
   choices = []
