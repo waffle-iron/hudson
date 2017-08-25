@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/appknox/hudson.png?label=ready&title=Ready)](https://waffle.io/appknox/hudson?utm_source=badge)
 # hudson
 
 This README outlines the details of collaborating on this Ember application.
